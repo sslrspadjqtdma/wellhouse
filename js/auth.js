@@ -22,7 +22,7 @@ function setMode(mode) {
   document.querySelector('#nickname').required = isSignup;
   document.querySelector('#password-confirm').required = isSignup;
   document.querySelector('.remember-option').hidden = isSignup;
-  document.querySelector('.forgot-button').hidden = isSignup;
+  document.querySelector('.find-links').hidden = isSignup;
   formMessage.textContent = '';
   formMessage.classList.remove('is-success');
   const url = new URL(window.location.href);
@@ -49,9 +49,11 @@ authForm.addEventListener('submit', (event) => {
   formMessage.classList.add('is-success');
 });
 
-document.querySelector('.forgot-button').addEventListener('click', () => {
+document.querySelectorAll('.forgot-button').forEach((button) => button.addEventListener('click', () => {
   formMessage.classList.remove('is-success');
-  formMessage.textContent = '비밀번호 재설정 기능은 계정 서버 연결 후 이용할 수 있어요.';
-});
+  formMessage.textContent = button.dataset.find === 'id'
+    ? '아이디 찾기 기능은 계정 서버 연결 후 이용할 수 있어요.'
+    : '비밀번호 재설정 기능은 계정 서버 연결 후 이용할 수 있어요.';
+}));
 
 setMode(new URLSearchParams(window.location.search).get('mode') === 'signup' ? 'signup' : 'login');

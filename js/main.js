@@ -1,5 +1,5 @@
 const categoryButtons = document.querySelectorAll('.category-chip');
-const productCards = document.querySelectorAll('.product-card');
+const productCards = document.querySelectorAll('#product-grid .product-card');
 const searchInput = document.querySelector('#product-search');
 const emptyState = document.querySelector('#empty-state');
 const menuToggle = document.querySelector('.menu-toggle');
@@ -37,6 +37,29 @@ document.querySelectorAll('.favorite-button').forEach((button) => {
     const isFavorite = button.getAttribute('aria-pressed') === 'true';
     button.setAttribute('aria-pressed', String(!isFavorite));
     button.textContent = isFavorite ? '♡' : '♥';
+  });
+});
+
+const bestTabs = document.querySelectorAll('.best-tab');
+
+function selectBestTab(tab) {
+  bestTabs.forEach((item) => {
+    const isSelected = item === tab;
+    item.classList.toggle('is-active', isSelected);
+    item.setAttribute('aria-selected', String(isSelected));
+    item.tabIndex = isSelected ? 0 : -1;
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !isSelected;
+  });
+}
+
+bestTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectBestTab(tab));
+  tab.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+    const step = event.key === 'ArrowRight' ? 1 : -1;
+    const nextTab = bestTabs[(index + step + bestTabs.length) % bestTabs.length];
+    selectBestTab(nextTab);
+    nextTab.focus();
   });
 });
 

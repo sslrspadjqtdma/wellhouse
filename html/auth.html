@@ -15,12 +15,6 @@
 <body class="auth-page">
   <header class="auth-header"><a class="wordmark" href="../index.html">wellhouse<span class="wordmark-dot">.</span></a><a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 둘러보기로 돌아가기</a></header>
   <main class="auth-layout">
-    <section class="auth-visual" aria-label="wellhouse 소개">
-      <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=1100&q=85" alt="자연광이 들어오는 빈티지 가구 공간">
-      <div class="visual-shade"></div>
-      <div class="visual-copy"><span>GOOD THINGS FIND GOOD HOMES</span><h1>취향은 이어지고,<br>물건은 다시 빛나요.</h1><p>당신의 다음 발견을 시작해보세요.</p></div>
-      <span class="visual-number">W / 001</span>
-    </section>
     <section class="auth-panel">
       <div class="auth-inner">
         <p class="eyebrow">WELCOME TO WELLHOUSE</p>
@@ -37,7 +31,7 @@
           <label class="field-label password-label" for="password">비밀번호</label>
           <input class="auth-input" id="password" name="password" type="password" autocomplete="current-password" placeholder="8자 이상 입력해주세요" minlength="8" required>
           <div class="signup-only password-confirm" hidden><label class="field-label" for="password-confirm">비밀번호 확인</label><input class="auth-input" id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" placeholder="비밀번호를 한 번 더 입력해주세요"></div>
-          <div class="form-options"><label class="remember-option"><input type="checkbox" id="remember"><span>로그인 유지</span></label><button type="button" class="forgot-button">비밀번호 찾기</button></div>
+          <div class="form-options"><label class="remember-option"><input type="checkbox" id="remember"><span>로그인 유지</span></label><div class="find-links"><button type="button" class="forgot-button" data-find="id">아이디 찾기</button><span class="find-divider" aria-hidden="true"></span><button type="button" class="forgot-button" data-find="password">비밀번호 찾기</button></div></div>
           <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
           <button class="submit-button" id="submit-button" type="submit">로그인 <span aria-hidden="true">↗</span></button>
         </form>
