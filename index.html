@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f7f5ef">
+	<meta name="description" content="잘 고른 빈티지와 다시 만나는 곳, wellhouse.">
+	<title>wellhouse — 오래된 것들의 새로운 자리</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/main.js" defer></script>
+</head>
+<body>
+	<div class="announcement">사진부터 실물까지 검수한 빈티지, wellhouse에서 믿고 사고팔아요 <span aria-hidden="true">✳</span></div>
+	<header class="site-header">
+		<div class="header-main">
+			<button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
+			<a class="wordmark" href="index.html" aria-label="wellhouse 홈">wellhouse<span class="wordmark-dot">.</span></a>
+			<nav class="main-nav" aria-label="주 메뉴">
+				<a href="#discover">둘러보기</a>
+				<a href="#new-arrivals">새로 들어왔어요</a>
+				<a href="#story">wellhouse 이야기</a>
+				<a href="#inspection">검수과정</a>
+			</nav>
+			<div class="header-actions">
+				<a class="login-link" href="html/auth.html">로그인</a>
+				<a class="join-button" href="html/auth.html?mode=signup">회원가입 <span aria-hidden="true">↗</span></a>
+				<button class="bag-button" type="button" aria-label="장바구니 보기"><span aria-hidden="true">♧</span><span class="bag-count">0</span></button>
+			</div>
+		</div>
+		<section class="category-section" aria-label="카테고리 선택">
+			<div class="section-kicker">FIND YOUR FAVORITE</div>
+			<div class="category-row" role="group" aria-label="상품 카테고리">
+				<button class="category-chip is-active" type="button" data-category="all">전체 <span>08</span></button>
+				<button class="category-chip" type="button" data-category="fashion">패션 <span>03</span></button>
+				<button class="category-chip" type="button" data-category="electronics">전자기기 <span>01</span></button>
+				<button class="category-chip" type="button" data-category="cd">CD <span>00</span></button>
+				<button class="category-chip" type="button" data-category="props">소품 <span>04</span></button>
+				<button class="category-chip" type="button" data-category="goods">굿즈 <span>00</span></button>
+			</div>
+			<label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="어떤 보물을 찾고 있나요?" autocomplete="off"><kbd>↵</kbd></label>
+		</section>
+	</header>
+
+	<main>
+		<section class="hero" id="discover">
+			<div class="hero-copy">
+				<p class="eyebrow"><span class="eyebrow-mark">✳</span> 꼼꼼한 검수와 등급 판정으로 믿을 수 있는 빈티지 매입·매매</p>
+				<h1>오래된 것들의<br><em>새로운 자리.</em></h1>
+				<p class="hero-description">사진 검수부터 실물 검수까지 꼼꼼하게.<br>검수를 마친 믿을 수 있는 빈티지 상품을 사고팔아요.</p>
+				<div class="hero-actions">
+					<a class="hero-action hero-action-buy" href="#new-arrivals">구매하기 <span aria-hidden="true">↘</span></a>
+					<a class="hero-action hero-action-sell" href="html/auth.html?mode=signup">판매하기 <span aria-hidden="true">↗</span></a>
+				</div>
+				<div class="hero-note"><span class="note-line"></span> 매일 업데이트되는 작은 보물들</div>
+			</div>
+			<div class="hero-art" aria-label="검수한 빈티지 의류와 가죽 재킷">
+				<div class="hero-photo photo-one"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1100&q=85" alt="질감이 살아 있는 브라운 빈티지 가죽 재킷"></div>
+				<div class="hero-photo photo-two"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=620&q=85" alt="한 벌씩 살펴볼 수 있도록 걸어둔 빈티지 의류"></div>
+				<div class="hero-sticker"><span>PHOTO<br>TO REAL<br>CHECKED</span><span class="sticker-flower">✳</span></div>
+				<span class="image-caption">좋은 옷은 다시, 오래 입도록</span>
+			</div>
+			<div class="hero-index"><span>01</span><span class="index-line"></span><span>03</span></div>
+		</section>
+
+		<section class="products-section" id="new-arrivals">
+			<div class="section-heading">
+				<div><p class="eyebrow">JUST FOUND</p><h2>오늘의 발견<span class="heading-period">.</span></h2></div>
+				<a class="text-link" href="#new-arrivals">전체 상품 보기 <span aria-hidden="true">↗</span></a>
+			</div>
+			<div class="product-grid" id="product-grid">
+				<article class="product-card" data-category="fashion" data-name="90s 스웨이드 재킷 빈티지 브라운 아우터">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=85" alt="브라운 스웨이드 빈티지 재킷"><span class="condition-tag">VERY GOOD</span></a>
+					<button class="favorite-button" type="button" aria-label="90s 스웨이드 재킷 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>ARCHIVE CLOSET</span><span>1시간 전</span></div><h3>90s 스웨이드 재킷</h3><div class="product-bottom"><strong>58,000원</strong><span class="product-size">M</span></div>
+				</article>
+				<article class="product-card" data-category="props" data-name="오크 원목 사이드 테이블 빈티지 가구 소품">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=700&q=85" alt="원목 테이블과 빈티지 조명"><span class="condition-tag">GOOD</span></a>
+					<button class="favorite-button" type="button" aria-label="오크 원목 사이드 테이블 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>ROOM 204</span><span>3시간 전</span></div><h3>오크 원목 사이드 테이블</h3><div class="product-bottom"><strong>42,000원</strong><span class="product-size">직거래</span></div>
+				</article>
+				<article class="product-card" data-category="props" data-name="빈티지 플라워 베이스 화병 오브제 소품">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=700&q=85" alt="차분한 색감의 빈티지 화병"><span class="condition-tag">LIKE NEW</span></a>
+					<button class="favorite-button" type="button" aria-label="빈티지 플라워 베이스 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>ODD OBJECTS</span><span>오늘</span></div><h3>빈티지 플라워 베이스</h3><div class="product-bottom"><strong>24,000원</strong><span class="product-size">1개</span></div>
+				</article>
+				<article class="product-card" data-category="fashion" data-name="체크 울 머플러 빈티지 스카프">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=700&q=85" alt="체크 패턴의 포근한 머플러"><span class="condition-tag">VERY GOOD</span></a>
+					<button class="favorite-button" type="button" aria-label="체크 울 머플러 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>ARCHIVE CLOSET</span><span>어제</span></div><h3>체크 울 머플러</h3><div class="product-bottom"><strong>19,000원</strong><span class="product-size">FREE</span></div>
+				</article>
+				<article class="product-card" data-category="props" data-name="유리 테이블 램프 빈티지 조명 소품">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=85" alt="따뜻한 빛을 내는 테이블 램프"><span class="condition-tag">GOOD</span></a>
+					<button class="favorite-button" type="button" aria-label="유리 테이블 램프 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>ROOM 204</span><span>어제</span></div><h3>유리 테이블 램프</h3><div class="product-bottom"><strong>36,000원</strong><span class="product-size">높이 32cm</span></div>
+				</article>
+				<article class="product-card" data-category="fashion" data-name="레더 크로스백 빈티지 가방 브라운">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=85" alt="브라운 레더 빈티지 크로스백"><span class="condition-tag">VERY GOOD</span></a>
+					<button class="favorite-button" type="button" aria-label="레더 크로스백 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>MONO MARKET</span><span>2일 전</span></div><h3>레더 크로스백</h3><div class="product-bottom"><strong>31,000원</strong><span class="product-size">미니</span></div>
+				</article>
+				<article class="product-card" data-category="props" data-name="세라믹 플레이트 접시 그릇 테이블웨어 소품">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=700&q=85" alt="손맛이 느껴지는 세라믹 테이블웨어"><span class="condition-tag">LIKE NEW</span></a>
+					<button class="favorite-button" type="button" aria-label="세라믹 플레이트 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>ODD OBJECTS</span><span>2일 전</span></div><h3>세라믹 플레이트 2장</h3><div class="product-bottom"><strong>16,000원</strong><span class="product-size">2개 세트</span></div>
+				</article>
+				<article class="product-card" data-category="electronics" data-name="필름 카메라 올림푸스 빈티지 전자기기 카메라">
+					<a class="product-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=85" alt="클래식한 필름 카메라"><span class="condition-tag">GOOD</span></a>
+					<button class="favorite-button" type="button" aria-label="필름 카메라 찜하기" aria-pressed="false">♡</button>
+					<div class="product-meta"><span>MONO MARKET</span><span>3일 전</span></div><h3>올림푸스 필름 카메라</h3><div class="product-bottom"><strong>76,000원</strong><span class="product-size">작동 확인</span></div>
+				</article>
+			</div>
+			<p class="empty-state" id="empty-state" hidden>아직 이 조건에 맞는 보물이 없어요. 다른 검색어로 찾아볼까요?</p>
+			<button class="load-more" type="button">보물 더 보기 <span aria-hidden="true">＋</span></button>
+		</section>
+
+		<section class="inspection-section" id="inspection" aria-labelledby="inspection-title">
+			<div class="inspection-heading">
+				<div><p class="eyebrow">WELLHOUSE QUALITY CHECK</p><h2 id="inspection-title">한 번 더 살펴, 솔직하게 전합니다<span>.</span></h2></div>
+				<p>사진으로 먼저 확인하고, 실물을 직접 살펴<br>모든 정보를 투명하게 전달해요.</p>
+			</div>
+			<ol class="inspection-steps">
+				<li class="inspection-step">
+					<span class="inspection-number">01</span>
+					<h3>1차 사진검수</h3>
+					<p>등록된 사진과 상품 정보를 살펴 오염, 훼손, 구성품 등 눈에 보이는 상태를 먼저 확인합니다.</p>
+				</li>
+				<li class="inspection-step">
+					<span class="inspection-number">02</span>
+					<h3>실물입고</h3>
+					<p>상품을 입고해 등록 내용과 실제 상품이 일치하는지 확인하고 실물 검수를 준비합니다.</p>
+				</li>
+				<li class="inspection-step">
+					<span class="inspection-number">03</span>
+					<h3>2차 실물검수 및 등급판정</h3>
+					<p>마모와 오염, 작동 상태를 직접 살펴 등급을 정하고 구매 전에 알아야 할 특징을 기록합니다.</p>
+				</li>
+				<li class="inspection-step">
+					<span class="inspection-number">04</span>
+					<h3>판매등록</h3>
+					<p>검수 결과와 상품 상태를 상세히 정리해 구매자가 확인할 수 있도록 판매 페이지에 등록합니다.</p>
+				</li>
+			</ol>
+			<div class="grade-guide" aria-labelledby="grade-title">
+				<div class="grade-heading">
+					<p class="eyebrow">CLEAR CONDITION, HONEST GRADE</p>
+					<h3 id="grade-title">검수 후, 상태에 맞는 등급을 부여해요</h3>
+					<p>상품의 상태와 사용 흔적을 확인해 아래 기준으로 안내합니다.</p>
+				</div>
+				<ul class="grade-list">
+					<li class="grade-item"><span class="grade-mark">S</span><div><h4>미개봉</h4><p>미개봉 상품으로, 완벽한 상태</p></div></li>
+					<li class="grade-item"><span class="grade-mark">A</span><div><h4>개봉 후 새 상품</h4><p>개봉은 했지만 상품은 새것인 상태</p></div></li>
+					<li class="grade-item"><span class="grade-mark">B</span><div><h4>사용감 있음</h4><p>사용감이나 사용한 흔적이 있는 상태</p></div></li>
+					<li class="grade-item"><span class="grade-mark">C</span><div><h4>흠집 있음</h4><p>기스 또는 까짐과 같은 흠집이 있는 상태</p></div></li>
+					<li class="grade-item"><span class="grade-mark">F</span><div><h4>사용감 많음</h4><p>기존 포장박스가 없고, 사용감이 확실한 상태</p></div></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="story-band" id="story"><span class="story-flower" aria-hidden="true">✳</span><p>잘 고르고, 오래 쓰고,<br><em>다시 잘 건네는 마음.</em></p><a href="html/about.html">wellhouse가 생각하는 중고거래 <span aria-hidden="true">↗</span></a></section>
+	</main>
+	<footer class="site-footer"><a class="wordmark footer-wordmark" href="index.html">wellhouse<span class="wordmark-dot">.</span></a><span>좋은 물건은 오래도록 곁에 있어요.</span><span>© 2026 wellhouse</span></footer>
+</body>
+</html>

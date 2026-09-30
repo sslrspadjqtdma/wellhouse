@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>로그인 / 회원가입 — wellhouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <script src="../js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+  <header class="auth-header"><a class="wordmark" href="../index.html">wellhouse<span class="wordmark-dot">.</span></a><a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 둘러보기로 돌아가기</a></header>
+  <main class="auth-layout">
+    <section class="auth-visual" aria-label="wellhouse 소개">
+      <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=1100&q=85" alt="자연광이 들어오는 빈티지 가구 공간">
+      <div class="visual-shade"></div>
+      <div class="visual-copy"><span>GOOD THINGS FIND GOOD HOMES</span><h1>취향은 이어지고,<br>물건은 다시 빛나요.</h1><p>당신의 다음 발견을 시작해보세요.</p></div>
+      <span class="visual-number">W / 001</span>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-inner">
+        <p class="eyebrow">WELCOME TO WELLHOUSE</p>
+        <h2 id="form-title">다시 만나 반가워요.</h2>
+        <p class="auth-description" id="form-description">로그인하고 마음에 담아둔 물건을 만나보세요.</p>
+        <div class="auth-tabs" role="tablist" aria-label="계정 메뉴">
+          <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-mode="login">로그인</button>
+          <button class="auth-tab" type="button" role="tab" aria-selected="false" data-mode="signup">회원가입</button>
+        </div>
+        <form id="auth-form" novalidate>
+          <label class="field-label" for="email">이메일</label>
+          <input class="auth-input" id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+          <div class="signup-only" hidden><label class="field-label" for="nickname">닉네임</label><input class="auth-input" id="nickname" name="nickname" type="text" autocomplete="nickname" placeholder="거래할 때 사용할 이름" maxlength="16"></div>
+          <label class="field-label password-label" for="password">비밀번호</label>
+          <input class="auth-input" id="password" name="password" type="password" autocomplete="current-password" placeholder="8자 이상 입력해주세요" minlength="8" required>
+          <div class="signup-only password-confirm" hidden><label class="field-label" for="password-confirm">비밀번호 확인</label><input class="auth-input" id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" placeholder="비밀번호를 한 번 더 입력해주세요"></div>
+          <div class="form-options"><label class="remember-option"><input type="checkbox" id="remember"><span>로그인 유지</span></label><button type="button" class="forgot-button">비밀번호 찾기</button></div>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          <button class="submit-button" id="submit-button" type="submit">로그인 <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="terms-copy signup-only" hidden>가입하면 <a href="#terms">이용약관</a>과 <a href="#privacy">개인정보 처리방침</a>에 동의하게 됩니다.</p>
+        <div class="auth-divider"><span>OR</span></div>
+        <button class="guest-button" type="button" onclick="window.location.href='../index.html'">로그인 없이 구경하기 <span aria-hidden="true">→</span></button>
+        <p class="demo-note">데모 화면입니다. 실제 계정 정보는 저장되지 않아요.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
