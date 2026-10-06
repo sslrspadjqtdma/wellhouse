@@ -19,10 +19,17 @@ function setMode(mode) {
   formDescription.textContent = isSignup ? '취향을 나눌 준비가 되셨나요?' : '로그인하고 마음에 담아둔 물건을 만나보세요.';
   submitButton.innerHTML = `${isSignup ? '회원가입' : '로그인'} <span aria-hidden="true">↗</span>`;
   passwordInput.autocomplete = isSignup ? 'new-password' : 'current-password';
+  if (isSignup) {
+    passwordInput.pattern = '(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}';
+    passwordInput.title = '영문 대문자와 소문자, 특수기호를 포함해 8자 이상 입력해 주세요.';
+  } else {
+    passwordInput.removeAttribute('pattern');
+    passwordInput.removeAttribute('title');
+  }
   document.querySelector('#nickname').required = isSignup;
   document.querySelector('#password-confirm').required = isSignup;
   document.querySelector('.remember-option').hidden = isSignup;
-  document.querySelector('.forgot-button').hidden = isSignup;
+  document.querySelectorAll('.account-recovery-button').forEach((button) => { button.hidden = isSignup; });
   formMessage.textContent = '';
   formMessage.classList.remove('is-success');
   const url = new URL(window.location.href);
@@ -52,6 +59,11 @@ authForm.addEventListener('submit', (event) => {
 document.querySelector('.forgot-button').addEventListener('click', () => {
   formMessage.classList.remove('is-success');
   formMessage.textContent = '비밀번호 재설정 기능은 계정 서버 연결 후 이용할 수 있어요.';
+});
+
+document.querySelector('.find-id-button').addEventListener('click', () => {
+  formMessage.classList.remove('is-success');
+  formMessage.textContent = '아이디 찾기 기능은 계정 서버 연결 후 이용할 수 있어요.';
 });
 
 setMode(new URLSearchParams(window.location.search).get('mode') === 'signup' ? 'signup' : 'login');

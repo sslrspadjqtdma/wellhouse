@@ -1,0 +1,208 @@
+body{font-size:17px}
+.announcement{height:auto;min-height:38px;padding:6px 12px;font-size:13px;line-height:1.5}
+.main-nav,.header-actions,.join-button{font-size:15px}
+.bag-count{width:18px;height:18px;font-size:12px}
+.eyebrow,.section-kicker{font-size:12px;line-height:1.6;letter-spacing:.1em}
+.hero-description{font-size:16px;line-height:1.8}
+.hero-action{font-size:15px}
+.hero-note{font-size:14px}
+.hero-sticker{font-size:11px}
+.image-caption{font-size:14px}
+.hero-index{font-size:12px}
+.category-chip{font-size:15px}
+.category-chip span{font-size:13px}
+.search-box input{font-size:16px}
+.search-box kbd{font-size:13px}
+.best-tab{font-size:15px}
+.best-rank{font-size:13px}
+.sale-note{font-size:15px;line-height:1.6}
+.sale-badge{font-size:12px}
+.sale-price-line{flex-wrap:wrap}
+.sale-price-line del{font-size:14px}
+.sale-price-line span{font-size:13px}
+.product-meta{gap:4px;flex-wrap:wrap;font-size:13px;line-height:1.5;letter-spacing:.02em}
+.product-card h3{font-size:17px;line-height:1.5}
+.product-bottom{gap:8px;flex-wrap:wrap}
+.product-bottom strong{font-size:17px}
+.product-size{font-size:14px}
+.condition-tag{font-size:12px}
+.empty-state{font-size:18px}
+.load-more,.text-link{font-size:15px}
+.inspection-heading>p,.inspection-step p{font-size:15px;line-height:1.8}
+.inspection-step h3{font-size:17px}
+.inspection-number{font-size:13px}
+.grade-heading .eyebrow{font-size:12px}
+.grade-item h4{font-size:15px}
+.grade-item p,.grade-heading>p:last-child{font-size:14px;line-height:1.8}
+.story-band a{font-size:14px}
+.site-footer{font-size:13px}
+
+.auth-page{font-size:17px}
+.back-link{font-size:15px}
+.visual-copy>span{font-size:12px;line-height:1.5}
+.visual-copy p{font-size:15px;line-height:1.7}
+.visual-number{font-size:12px}
+.auth-inner>.eyebrow{font-size:12px}
+.auth-description{font-size:15px;line-height:1.7}
+.auth-tab,.field-label,.submit-button{font-size:15px}
+.auth-input{height:50px;font-size:16px}
+.auth-input::placeholder{font-size:14px}
+.password-hint{margin:6px 0 0;color:#a34e3d;font-size:12px;line-height:1.6}
+.form-options{font-size:14px}
+.remember-option input{width:16px;height:16px}
+.forgot-button,.guest-button{font-size:14px}
+.form-message{min-height:20px;font-size:13px;line-height:1.5}
+.terms-copy{font-size:14px;line-height:1.8}
+.auth-divider{font-size:12px}
+.submit-button,.guest-button{min-height:49px}
+.demo-note{font-size:13px;line-height:1.6}
+.recovery-actions{display:flex;align-items:center;gap:12px}
+.recovery-actions button{white-space:nowrap}
+.find-id-button{background:transparent;border:0;padding:3px;color:#797b71;font-size:14px;cursor:pointer}
+.auth-layout.auth-centered{min-height:calc(100vh - 75px);display:flex;grid-template-columns:1fr;align-items:center;justify-content:center;padding:32px 24px}
+.auth-centered .auth-panel{width:min(100%,460px);padding:0;align-items:center}
+.auth-centered .auth-inner{width:100%;padding:16px 0}
+.auth-centered .auth-inner>.eyebrow{margin-bottom:8px}
+.auth-centered .auth-inner h2{margin-bottom:7px}
+.auth-centered .auth-description{margin-bottom:18px}
+.auth-centered .auth-tabs{margin-bottom:14px}
+.auth-centered .field-label{margin:9px 0 5px}
+.auth-centered .auth-input{height:42px}
+.auth-centered .form-options{margin:8px 0 3px}
+.auth-centered .form-message{min-height:12px;margin:3px 0 5px}
+.auth-centered .terms-copy{margin-top:8px}
+.auth-centered .auth-divider{margin:13px 0}
+.auth-centered .demo-note{margin-top:9px;font-size:12px}
+.auth-centered .remember-option[hidden],.auth-centered .forgot-button[hidden]{display:none}
+
+@media(max-width:900px){
+  .header-actions{font-size:14px}
+  .category-section{grid-template-columns:minmax(0,.85fr) minmax(0,2fr) minmax(0,.85fr)}
+}
+
+@media(max-width:760px){
+  .visual-copy>span{font-size:11px}
+  .visual-copy p{font-size:14px}
+}
+
+@media(max-width:650px){
+  .announcement{font-size:12px}
+  .header-actions,.join-button{font-size:14px}
+  .hero-description{font-size:15px}
+  .hero-note{font-size:14px}
+  .category-chip{font-size:14px}
+  .category-chip span{font-size:12px}
+  .search-box input{font-size:15px}
+  .product-meta{font-size:12px}
+  .product-card h3{font-size:16px;min-height:0}
+  .product-bottom strong{font-size:16px}
+  .product-size{font-size:13px}
+  .condition-tag{font-size:11px}
+  .inspection-heading>p,.inspection-step p{font-size:14px}
+  .inspection-step h3{font-size:16px}
+  .grade-item h4{font-size:14px}
+  .grade-item p,.grade-heading>p:last-child{font-size:13px}
+  .site-footer span{font-size:12px}
+  .category-section{grid-template-columns:1fr}
+  .category-row{display:flex;justify-content:safe center;gap:4px}
+  .category-group{display:contents}
+  .back-link{font-size:14px}
+  .auth-tab,.field-label,.submit-button{font-size:14px}
+  .auth-description{font-size:14px}
+  .auth-input{font-size:16px}
+  .password-hint{font-size:12px}
+  .forgot-button,.guest-button,.terms-copy{font-size:13px}
+}
+
+@media(max-width:760px){
+  .auth-layout.auth-centered{min-height:calc(100vh - 64px);padding:24px 22px}
+  .auth-centered .auth-panel{padding:0;align-items:center}
+  .auth-centered .auth-inner{padding:20px 0}
+}
+
+.help-section{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;padding:72px 8.6% 78px;border-top:1px solid var(--line)}
+.help-column{min-width:0}
+.help-column .eyebrow{margin-bottom:12px}
+.help-column h2{font:400 32px/1.4 var(--serif);margin:0 0 24px}
+.faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{display:flex;align-items:center;gap:12px;min-height:62px;cursor:pointer;list-style:none;font-size:16px;font-weight:600}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-mark{color:#ad553e;font-size:13px;font-weight:700}
+.faq-toggle{margin-left:auto;color:#ad553e;font-size:22px;font-weight:400;transition:transform .2s}
+.faq-item[open] .faq-toggle{transform:rotate(45deg)}
+.faq-item p{margin:0;padding:0 24px 20px;color:var(--muted);font-size:15px;line-height:1.8}
+.faq-item p a{color:#493426;text-decoration:underline;text-underline-offset:3px}
+.notice-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.notice-list li{border-bottom:1px solid var(--line)}
+.notice-list a{display:grid;grid-template-columns:1fr auto;gap:8px 12px;padding:18px 0;align-items:center}
+.notice-type{grid-column:1;color:var(--olive);font-size:12px;font-weight:700}
+.notice-title{grid-column:1;color:var(--ink);font-size:15px;line-height:1.5}
+.notice-arrow{grid-column:2;grid-row:1/3;color:#ad553e;font-size:18px}
+
+@media(max-width:900px){
+  .help-section{gap:36px;padding-left:6%;padding-right:6%}
+}
+
+@media(max-width:1100px){
+  .header-main{height:65px;justify-content:space-between;gap:0}
+  .menu-toggle{display:flex;width:25px;height:25px;flex-direction:column;justify-content:center;gap:5px;border:0;background:transparent;padding:2px;cursor:pointer}
+  .menu-toggle span{width:19px;height:1px;background:var(--ink)}
+  .main-nav{display:none;position:absolute;left:0;right:0;top:64px;padding:20px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+  .main-nav.is-open{display:flex}
+}
+
+@media(max-width:760px){
+  .site-header{height:auto;padding:0 20px}
+  .header-main{height:65px;justify-content:space-between;gap:0}
+  .menu-toggle{display:flex;width:25px;height:25px;flex-direction:column;justify-content:center;gap:5px;border:0;background:transparent;padding:2px;cursor:pointer}
+  .menu-toggle span{width:19px;height:1px;background:var(--ink)}
+  .main-nav{display:none;position:absolute;left:0;right:0;top:64px;padding:20px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+  .main-nav.is-open{display:flex}
+  .category-section{grid-template-columns:1fr;min-height:0;padding:10px 0 12px;gap:8px}
+  .category-section .section-kicker{display:none}
+  .category-row{display:flex;justify-content:safe center;gap:4px}
+  .category-group{display:contents}
+  .help-section{grid-template-columns:1fr;gap:46px;padding:48px 22px 56px}
+  .help-column h2{font-size:28px;margin-bottom:18px}
+  .faq-item summary{min-height:58px;font-size:15px}
+  .faq-item p{padding-left:22px;font-size:14px}
+  .notice-list a{padding:15px 0}
+}
+
+.support-page-header{height:82px;padding:0 6.1%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper)}
+.support-page-header .wordmark{font-size:29px}
+.support-home-link{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:12px 15px;color:#493426;font-size:15px}
+.support-home-link span{color:#ad553e;font-size:20px}
+.support-page-main{width:min(100%,900px);margin:0 auto;padding:66px 30px 96px}
+.support-page-main>.eyebrow{margin-bottom:14px}
+.support-page-main h1{font:400 40px/1.4 var(--serif);margin:0 0 12px}
+.support-page-intro{margin:0;color:var(--muted);font-size:16px;line-height:1.8}
+.support-page-main .faq-list{margin-top:38px}
+.support-page-main .faq-item summary{padding:8px 0}
+.support-page-main .faq-item p{padding-bottom:22px}
+.support-faq{margin-top:56px}
+.support-faq h2{font:400 28px/1.4 var(--serif);margin:0 0 18px}
+.support-faq .faq-list{margin-top:18px}
+.notice-entries{margin-top:38px;border-top:1px solid var(--line)}
+.notice-entry{padding:25px 0;border-bottom:1px solid var(--line)}
+.notice-entry h2{margin:9px 0;font-size:21px;font-weight:600}
+.notice-entry>p{margin:0;color:var(--muted);font-size:16px;line-height:1.8}
+.notice-entry-link{display:inline-flex;align-items:center;gap:10px;margin-top:15px;color:#493426;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.notice-entry-link span{color:#ad553e;text-decoration:none}
+
+@media(max-width:650px){
+  .support-page-header{height:68px;padding:0 20px}
+  .support-page-header .wordmark{font-size:24px}
+  .support-home-link{gap:7px;padding:10px 11px;font-size:13px}
+  .support-home-link span{font-size:18px}
+  .support-page-main{padding:44px 22px 68px}
+  .support-page-main h1{font-size:32px}
+  .support-page-intro,.notice-entry>p{font-size:15px}
+  .support-page-main .faq-item summary{min-height:58px;gap:9px;font-size:15px}
+  .support-page-main .faq-item p{padding-left:22px;font-size:14px}
+  .support-faq{margin-top:42px}
+  .support-faq h2{font-size:24px}
+  .notice-entry{padding:21px 0}
+  .notice-entry h2{font-size:18px}
+}

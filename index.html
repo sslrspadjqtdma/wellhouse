@@ -10,6 +10,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/readable-text.css">
 	<script src="js/main.js" defer></script>
 </head>
 <body>
@@ -23,6 +24,8 @@
 				<a href="#new-arrivals">새로 들어왔어요</a>
 				<a href="#story">wellhouse 이야기</a>
 				<a href="#inspection">검수과정</a>
+				<a href="html/support.html">Q&amp;A</a>
+				<a href="html/support.html">공지사항</a>
 			</nav>
 			<div class="header-actions">
 				<a class="login-link" href="html/auth.html">로그인</a>
@@ -33,12 +36,15 @@
 		<section class="category-section" aria-label="카테고리 선택">
 			<div class="section-kicker">FIND YOUR FAVORITE</div>
 			<div class="category-row" role="group" aria-label="상품 카테고리">
+				<div class="category-group category-group-before">
+					<button class="category-chip" type="button" data-category="fashion">패션 <span>03</span></button>
+					<button class="category-chip" type="button" data-category="electronics">전자기기 <span>01</span></button>
+				</div>
 				<button class="category-chip is-active" type="button" data-category="all">전체 <span>08</span></button>
-				<button class="category-chip" type="button" data-category="fashion">패션 <span>03</span></button>
-				<button class="category-chip" type="button" data-category="electronics">전자기기 <span>01</span></button>
-				<button class="category-chip" type="button" data-category="cd">CD <span>00</span></button>
-				<button class="category-chip" type="button" data-category="props">소품 <span>04</span></button>
-				<button class="category-chip" type="button" data-category="goods">굿즈 <span>00</span></button>
+				<div class="category-group category-group-after">
+					<button class="category-chip" type="button" data-category="cd">CD <span>00</span></button>
+					<button class="category-chip" type="button" data-category="props">소품 <span>04</span></button>
+				</div>
 			</div>
 			<label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="어떤 보물을 찾고 있나요?" autocomplete="off"><kbd>↵</kbd></label>
 		</section>
@@ -63,6 +69,64 @@
 				<span class="image-caption">좋은 옷은 다시, 오래 입도록</span>
 			</div>
 			<div class="hero-index"><span>01</span><span class="index-line"></span><span>03</span></div>
+		</section>
+
+		<section class="best-section" id="best-products" aria-labelledby="best-period-title">
+			<div class="section-heading best-heading">
+				<div><p class="eyebrow">BEST PICKS</p><h2 id="best-period-title">투데이 베스트<span class="heading-period">.</span></h2></div>
+				<div class="best-tabs" role="group" aria-label="베스트 기간 선택">
+					<button class="best-tab" type="button" data-period="today" data-period-label="투데이 베스트" aria-pressed="true">투데이 베스트</button>
+					<button class="best-tab" type="button" data-period="week" data-period-label="주간 베스트" aria-pressed="false">주간 베스트</button>
+					<button class="best-tab" type="button" data-period="month" data-period-label="월간 베스트" aria-pressed="false">월간 베스트</button>
+				</div>
+			</div>
+			<div class="best-product-grid" id="best-product-grid" aria-live="polite">
+				<article class="product-card best-card" data-rank-today="1" data-rank-week="3" data-rank-month="2">
+					<a class="best-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=85" alt="브라운 스웨이드 빈티지 재킷"><span class="best-rank">01</span></a>
+					<div class="product-meta"><span>ARCHIVE CLOSET</span><span>VERY GOOD</span></div><h3>90s 스웨이드 재킷</h3><div class="product-bottom"><strong>58,000원</strong><span class="product-size">M</span></div>
+				</article>
+				<article class="product-card best-card" data-rank-today="2" data-rank-week="1" data-rank-month="4">
+					<a class="best-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=85" alt="클래식한 필름 카메라"><span class="best-rank">02</span></a>
+					<div class="product-meta"><span>MONO MARKET</span><span>GOOD</span></div><h3>올림푸스 필름 카메라</h3><div class="product-bottom"><strong>76,000원</strong><span class="product-size">작동 확인</span></div>
+				</article>
+				<article class="product-card best-card" data-rank-today="3" data-rank-week="4" data-rank-month="1">
+					<a class="best-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=700&q=85" alt="원목 테이블과 빈티지 조명"><span class="best-rank">03</span></a>
+					<div class="product-meta"><span>ROOM 204</span><span>GOOD</span></div><h3>오크 원목 사이드 테이블</h3><div class="product-bottom"><strong>42,000원</strong><span class="product-size">직거래</span></div>
+				</article>
+				<article class="product-card best-card" data-rank-today="4" data-rank-week="2" data-rank-month="3">
+					<a class="best-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=700&q=85" alt="플라워 패턴 빈티지 손수건"><span class="best-rank">04</span></a>
+					<div class="product-meta"><span>ODD OBJECTS</span><span>LIKE NEW</span></div><h3>플라워 패턴 빈티지 손수건</h3><div class="product-bottom"><strong>16,000원</strong><span class="product-size">1장</span></div>
+				</article>
+			</div>
+		</section>
+
+		<section class="sale-section" id="sale-products" aria-labelledby="sale-title">
+			<div class="section-heading sale-heading">
+				<div><p class="eyebrow">VINTAGE SALE</p><h2 id="sale-title">할인 상품<span class="heading-period">.</span></h2></div>
+				<p class="sale-note">오래 곁에 둘 빈티지 아이템을 특별한 가격으로 만나보세요.</p>
+			</div>
+			<div class="sale-grid">
+				<article class="product-card sale-card">
+					<a class="sale-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=85" alt="빛이 비치는 빈티지 유리잔 세트"><span class="sale-badge">20% OFF</span></a>
+					<div class="product-meta"><span>GLASS ARCHIVE</span><span>2 PIECES</span></div><h3>빈티지 유리잔 세트</h3>
+					<div class="sale-price-line"><del>28,000원</del><span>20% 할인</span></div><div class="product-bottom"><strong>22,400원</strong><span class="product-size">2개 세트</span></div>
+				</article>
+				<article class="product-card sale-card">
+					<a class="sale-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=700&q=85" alt="잔잔한 체크 패턴의 빈티지 손수건"><span class="sale-badge">25% OFF</span></a>
+					<div class="product-meta"><span>ODD OBJECTS</span><span>LIKE NEW</span></div><h3>플라워 패턴 빈티지 손수건</h3>
+					<div class="sale-price-line"><del>16,000원</del><span>25% 할인</span></div><div class="product-bottom"><strong>12,000원</strong><span class="product-size">1장</span></div>
+				</article>
+				<article class="product-card sale-card">
+					<a class="sale-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=85" alt="브라운 컬러의 90년대 빈티지 재킷"><span class="sale-badge">30% OFF</span></a>
+					<div class="product-meta"><span>ARCHIVE CLOSET</span><span>VERY GOOD</span></div><h3>90s 스웨이드 재킷</h3>
+					<div class="sale-price-line"><del>88,000원</del><span>30% 할인</span></div><div class="product-bottom"><strong>61,600원</strong><span class="product-size">M</span></div>
+				</article>
+				<article class="product-card sale-card">
+					<a class="sale-image" href="#new-arrivals"><img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=700&q=85" alt="차분한 색감의 빈티지 화병"><span class="sale-badge">15% OFF</span></a>
+					<div class="product-meta"><span>ROOM 204</span><span>GOOD</span></div><h3>빈티지 플라워 베이스</h3>
+					<div class="sale-price-line"><del>38,000원</del><span>15% 할인</span></div><div class="product-bottom"><strong>32,300원</strong><span class="product-size">1개</span></div>
+				</article>
+			</div>
 		</section>
 
 		<section class="products-section" id="new-arrivals">

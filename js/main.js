@@ -4,6 +4,24 @@ const searchInput = document.querySelector('#product-search');
 const emptyState = document.querySelector('#empty-state');
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
+const bestTabs = document.querySelectorAll('.best-tab');
+const bestGrid = document.querySelector('#best-product-grid');
+const bestTitle = document.querySelector('#best-period-title');
+
+bestTabs.forEach((button) => {
+  button.addEventListener('click', () => {
+    bestTabs.forEach((tab) => tab.setAttribute('aria-pressed', String(tab === button)));
+    bestTitle.textContent = button.dataset.periodLabel;
+
+    const rankKey = `rank${button.dataset.period[0].toUpperCase()}${button.dataset.period.slice(1)}`;
+    const rankedCards = Array.from(bestGrid.children).sort((first, second) => Number(first.dataset[rankKey]) - Number(second.dataset[rankKey]));
+
+    rankedCards.forEach((card, index) => {
+      card.querySelector('.best-rank').textContent = String(index + 1).padStart(2, '0');
+      bestGrid.append(card);
+    });
+  });
+});
 
 let selectedCategory = 'all';
 
