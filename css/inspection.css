@@ -1,0 +1,68 @@
+/* 검수 과정: 4단계 박스 + 큰 화살표, 등급 요약 */
+.inspection-heading>p{font-size:16px;color:rgba(250,248,244,.82)}
+
+.qc-flow{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);align-items:stretch}
+.qc-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 18px 26px;border:1px solid rgba(250,248,244,.2);border-radius:16px;background:rgba(250,248,244,.06);transition:transform .25s,background .25s}
+.qc-step:hover{transform:translateY(-4px);background:rgba(250,248,244,.1)}
+.qc-number{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--lime)}
+.qc-icon{width:52px;height:52px;margin:16px 0 14px;fill:none;stroke:var(--lime);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.qc-step h3{margin:0 0 8px;font-family:'Pretendard',var(--sans);font-size:20px;font-weight:700;letter-spacing:-.02em;color:#fffaf4}
+.qc-step p{margin:0;font-size:15px;line-height:1.5;color:rgba(250,248,244,.75)}
+.qc-step-final{background:var(--lime);border-color:var(--lime)}
+.qc-step-final:hover{background:#f0d89f}
+.qc-step-final .qc-number,.qc-step-final h3{color:#3d2a1d}
+.qc-step-final .qc-icon{stroke:#3d2a1d}
+.qc-step-final p{color:rgba(61,42,29,.8)}
+/* 마우스를 올리거나(모바일은 탭) 포커스하면 자세한 설명이 박스 위로 떠오른다 */
+.qc-step{position:relative;overflow:hidden;cursor:default;outline:none}
+.qc-step::after{content:"+";position:absolute;top:12px;right:14px;width:22px;height:22px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(232,203,138,.6);color:var(--lime);font-size:15px;line-height:1;transition:opacity .2s}
+.qc-step-final::after{border-color:rgba(61,42,29,.45);color:#3d2a1d}
+.qc-step .qc-detail{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0;padding:22px 24px;background:#725543;color:#fffaf4;font-size:15px;line-height:1.75;text-align:center;word-break:keep-all;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s;pointer-events:none}
+.qc-step-final .qc-detail{background:#f0d89f;color:#3d2a1d}
+.qc-step:focus-visible .qc-detail,.qc-step.is-open .qc-detail{opacity:1;transform:none}
+.qc-step:focus-visible::after,.qc-step.is-open::after{opacity:0}
+@media(hover:hover){
+  .qc-step:hover .qc-detail{opacity:1;transform:none}
+  .qc-step:hover::after{opacity:0}
+}
+.qc-step:focus-visible{box-shadow:0 0 0 3px var(--lime)}
+.qc-arrow{display:grid;place-items:center;padding:0 8px}
+.qc-arrow svg{width:60px;height:60px;fill:none;stroke:var(--lime);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+
+.qc-grades{margin-top:56px;padding:30px 30px 26px;border-radius:16px;background:rgba(0,0,0,.14)}
+.qc-grades h3{margin:0 0 20px;font-family:'Pretendard',var(--sans);font-size:20px;font-weight:700;color:#fffaf4}
+.qc-grade-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.qc-grade-list li{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 10px;text-align:center;border-radius:12px;background:rgba(250,248,244,.07)}
+.qc-grade-mark{display:grid;place-items:center;width:40px;height:40px;margin-bottom:4px;border-radius:50%;background:var(--lime);color:#3d2a1d;font-size:18px;font-weight:800}
+.qc-grade-list strong{font-family:'Pretendard',var(--sans);font-size:17px;font-weight:700;color:#fffaf4}
+.qc-grade-list li>span:last-child{font-size:14px;color:rgba(250,248,244,.7)}
+.qc-grade-scale{display:flex;justify-content:space-between;margin:16px 0 0;padding-top:10px;border-top:3px solid transparent;border-image:linear-gradient(90deg,var(--lime),rgba(232,203,138,.15)) 1;font-size:13px;color:rgba(250,248,244,.6)}
+
+@media(max-width:900px){
+  .qc-step{padding:22px 12px}
+  .qc-step h3{font-size:17px}
+  .qc-step p{font-size:14px}
+  .qc-arrow{padding:0 4px}
+  .qc-arrow svg{width:32px;height:32px}
+}
+
+@media(max-width:760px){
+  .inspection-heading>p{font-size:15px}
+  .qc-flow{grid-template-columns:1fr;margin-top:30px}
+  .qc-step{flex-direction:row;flex-wrap:wrap;text-align:left;column-gap:14px;padding:18px 20px}
+  .qc-number{order:1;width:100%;margin-bottom:6px}
+  .qc-icon{order:2;width:40px;height:40px;margin:0}
+  .qc-step h3{order:3;margin:0;font-size:18px}
+  .qc-step p{order:4;width:100%;margin-top:6px;padding-left:54px}
+  .qc-step .qc-detail{width:auto;margin:0;padding:16px 20px;font-size:14px;line-height:1.65;text-align:left;justify-content:flex-start}
+  .qc-arrow{padding:6px 0}
+  .qc-arrow svg{width:36px;height:36px;transform:rotate(90deg)}
+  .qc-grades{margin-top:40px;padding:22px 16px 20px}
+  .qc-grades h3{font-size:18px}
+  .qc-grade-list{grid-template-columns:1fr;gap:8px}
+  .qc-grade-list li{flex-direction:row;gap:12px;padding:12px 14px;text-align:left}
+  .qc-grade-mark{width:34px;height:34px;margin:0;font-size:16px}
+  .qc-grade-list strong{font-size:16px}
+  .qc-grade-list li>span:last-child{margin-left:auto;font-size:13px}
+  .qc-grade-scale{display:none}
+}

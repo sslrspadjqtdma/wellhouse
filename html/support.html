@@ -4,91 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f5ef">
-  <title>Q&amp;A와 공지사항 — wellhouse</title>
+  <title>안내 및 Q&amp;A — wellhouse</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/support.css">
-  <script src="../js/support.js" defer></script>
+  <link rel="stylesheet" href="../css/readable-text.css">
 </head>
-<body class="support-page">
-  <header class="support-header"><a class="wordmark" href="../index.html">wellhouse<span class="wordmark-dot">.</span></a><a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 둘러보기로 돌아가기</a></header>
-  <main class="support-main">
-    <div class="support-intro">
-      <p class="eyebrow">HELP &amp; NEWS</p>
-      <h1>Q&amp;A와 공지사항<span class="heading-period">.</span></h1>
-      <p>wellhouse 이용 중 궁금한 점과 새로운 소식을 한곳에 모았어요.</p>
+<body>
+  <header class="support-page-header">
+    <a class="wordmark" href="../index.html" aria-label="wellhouse 홈">wellhouse<span class="wordmark-dot">.</span></a>
+    <a class="support-home-link" href="../index.html"><span aria-hidden="true">←</span> 홈페이지로 돌아가기</a>
+  </header>
+  <main class="support-page-main">
+    <p class="eyebrow">WELLHOUSE GUIDE</p>
+    <h1>이용 안내와 Q&amp;A</h1>
+    <p class="support-page-intro">상품을 고르고 이용하실 때 참고하실 내용을 안내해 드립니다.</p>
+
+    <div class="notice-entries">
+      <article class="notice-entry">
+        <p class="notice-type">검수 안내</p>
+        <h2>상품 상태와 등급을 꼼꼼히 확인합니다</h2>
+        <p>등록된 사진과 상품 정보를 먼저 살펴본 뒤 실물의 사용감, 오염, 흠집과 작동 상태를 확인합니다. 검수 결과와 상품별 특징은 각 상품 설명에서 확인하실 수 있습니다.</p>
+      </article>
+      <article class="notice-entry">
+        <p class="notice-type">상품 안내</p>
+        <h2>빈티지 상품은 하나씩 상태가 다릅니다</h2>
+        <p>오래 사용된 상품은 같은 종류라도 색감이나 사용 흔적이 서로 다를 수 있습니다. 구매 전 상품 사진과 설명을 함께 확인해 주세요.</p>
+      </article>
+      <article class="notice-entry">
+        <p class="notice-type">새 상품</p>
+        <h2>새로운 빈티지 상품이 꾸준히 등록됩니다</h2>
+        <p>상품 목록은 새롭게 발견한 아이템에 따라 업데이트됩니다. 카테고리와 검색을 이용해 관심 있는 상품을 살펴보세요.</p>
+      </article>
     </div>
 
-    <div class="support-tabs" role="tablist" aria-label="고객센터 메뉴">
-      <button class="support-tab is-active" type="button" role="tab" id="tab-notice" aria-controls="notice" aria-selected="true">공지사항</button>
-      <button class="support-tab" type="button" role="tab" id="tab-qna" aria-controls="qna" aria-selected="false" tabindex="-1">Q&amp;A</button>
-    </div>
-
-    <section class="support-panel" id="notice" role="tabpanel" aria-labelledby="tab-notice">
-      <ul class="notice-list">
-        <li>
-          <details class="notice-item">
-            <summary><span class="notice-tag is-important">중요</span><span class="notice-title">가을 시즌 매입 일정 안내</span><time datetime="2026-09-29">2026.09.29</time></summary>
-            <div class="notice-body"><p>10월 한 달 동안 가을·겨울 아우터와 니트 매입을 집중적으로 진행합니다. 사진 검수 결과는 평일 기준 2일 안에 안내해 드려요.</p><p>택배 입고는 10월 27일 도착분까지 받으며, 이후 도착한 상품은 다음 매입 일정으로 넘어갑니다.</p></div>
-          </details>
-        </li>
-        <li>
-          <details class="notice-item">
-            <summary><span class="notice-tag is-important">중요</span><span class="notice-title">정품이 확인되지 않는 상품 매입 기준 안내</span><time datetime="2026-09-22">2026.09.22</time></summary>
-            <div class="notice-body"><p>정품이 아니거나 판매에 적합하지 않은 상품은 빈티지 특성을 고려하더라도 매입하지 않습니다.</p><p>매입이 어려운 상품은 반송해 드리며, 이때 왕복 배송비는 wellhouse가 부담합니다.</p></div>
-          </details>
-        </li>
-        <li>
-          <details class="notice-item">
-            <summary><span class="notice-tag">안내</span><span class="notice-title">추석 연휴 배송 및 고객센터 운영 안내</span><time datetime="2026-09-15">2026.09.15</time></summary>
-            <div class="notice-body"><p>연휴 기간에는 출고와 문의 답변이 잠시 쉬어갑니다. 연휴 전날 오후 1시까지 결제된 주문은 당일 출고되고, 이후 주문은 연휴가 끝난 다음 날부터 순서대로 보내드려요.</p></div>
-          </details>
-        </li>
-        <li>
-          <details class="notice-item">
-            <summary><span class="notice-tag">업데이트</span><span class="notice-title">상품 등급 기준(S·A·B·C·F)이 새로워졌어요</span><time datetime="2026-09-03">2026.09.03</time></summary>
-            <div class="notice-body"><p>검수 후 부여하는 등급 설명을 더 자세하게 바꿨습니다. 상세 기준은 메인 페이지의 검수과정 섹션에서 확인할 수 있어요.</p></div>
-          </details>
-        </li>
-        <li>
-          <details class="notice-item">
-            <summary><span class="notice-tag">안내</span><span class="notice-title">wellhouse 오픈 안내</span><time datetime="2026-08-20">2026.08.20</time></summary>
-            <div class="notice-body"><p>사진부터 실물까지 검수한 빈티지를 믿고 사고파는 wellhouse가 문을 열었습니다. 오래된 것들의 새로운 자리를 함께 만들어 주세요.</p></div>
-          </details>
-        </li>
-      </ul>
-    </section>
-
-    <section class="support-panel" id="qna" role="tabpanel" aria-labelledby="tab-qna" hidden>
-      <div class="qna-filter" role="group" aria-label="Q&amp;A 분류">
-        <button class="qna-chip is-active" type="button" data-topic="all">전체</button>
-        <button class="qna-chip" type="button" data-topic="buy">구매·배송</button>
-        <button class="qna-chip" type="button" data-topic="sell">판매·매입</button>
-        <button class="qna-chip" type="button" data-topic="grade">검수·등급</button>
-        <button class="qna-chip" type="button" data-topic="account">계정</button>
-      </div>
-      <ul class="qna-list">
-        <li data-topic="buy"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">주문한 상품은 언제 받을 수 있나요?</span><span class="qna-topic">구매·배송</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>결제 후 평일 기준 1~2일 안에 출고되며, 출고 후 보통 1~2일이면 받아보실 수 있어요. 직거래 상품은 판매자와 약속한 일정에 따라 전달됩니다.</p></div></details></li>
-        <li data-topic="buy"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">빈티지 상품도 교환이나 환불이 되나요?</span><span class="qna-topic">구매·배송</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>상품 설명과 실제 상태가 다르다면 받은 날로부터 7일 안에 환불을 요청할 수 있어요. 단순 변심은 한 점뿐인 빈티지 특성상 어려운 점 양해 부탁드려요.</p></div></details></li>
-        <li data-topic="sell"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">판매하고 싶은 물건은 어떻게 보내나요?</span><span class="qna-topic">판매·매입</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>먼저 회원가입 후 판매하기에서 사진을 올려 주세요. 1차 사진검수를 통과하면 입고 안내를 드리고, 택배로 보내주시면 실물검수를 진행합니다.</p></div></details></li>
-        <li data-topic="sell"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">매입이 안 되는 상품도 있나요?</span><span class="qna-topic">판매·매입</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>정품이 아니거나 판매에 적합하지 않은 상품은 빈티지 특성을 고려하더라도 매입하지 않습니다. 이런 상품은 왕복 배송비 부담 없이 돌려보내 드려요.</p></div></details></li>
-        <li data-topic="grade"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">S·A·B·C·F 등급은 어떤 기준인가요?</span><span class="qna-topic">검수·등급</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>S는 미개봉, A는 개봉 후 새것 같은 상태, B는 사용감이나 사용 흔적이 있는 상태, C는 기스나 까짐 같은 흠집이 있는 상태, F는 포장이 없고 사용감이 확실한 상태예요.</p></div></details></li>
-        <li data-topic="grade"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">검수는 누가, 어떻게 하나요?</span><span class="qna-topic">검수·등급</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>wellhouse 검수팀이 사진검수, 실물입고, 실물검수 및 등급판정 순서로 직접 확인해요. 오염, 작동 상태, 구성품 등 구매 전에 알아야 할 특징은 상품 페이지에 모두 기록합니다.</p></div></details></li>
-        <li data-topic="account"><details class="qna-item"><summary><span class="qna-mark">Q</span><span class="qna-question">아이디나 비밀번호를 잊어버렸어요.</span><span class="qna-topic">계정</span></summary><div class="qna-answer"><span class="qna-mark">A</span><p>로그인 화면 아래의 아이디 찾기, 비밀번호 찾기를 이용해 주세요. 가입할 때 사용한 이메일로 안내를 보내드려요.</p></div></details></li>
-      </ul>
-
-      <div class="ask-box">
-        <div><p class="eyebrow">STILL CURIOUS?</p><h2>찾는 답이 없나요?</h2><p>궁금한 점을 남겨주시면 평일 기준 하루 안에 답변드릴게요.</p></div>
-        <form class="ask-form" id="ask-form" novalidate>
-          <label class="ask-label" for="ask-email">답변 받을 이메일</label>
-          <input class="ask-input" id="ask-email" type="email" placeholder="name@example.com" autocomplete="email" required>
-          <label class="ask-label" for="ask-message">문의 내용</label>
-          <textarea class="ask-input ask-textarea" id="ask-message" placeholder="궁금한 내용을 자유롭게 적어주세요" required></textarea>
-          <p class="ask-message" id="ask-status" role="status" aria-live="polite"></p>
-          <button class="ask-submit" type="submit">문의 남기기 <span aria-hidden="true">↗</span></button>
-        </form>
+    <section class="support-faq" aria-labelledby="support-faq-title">
+      <p class="eyebrow">QUESTIONS &amp; ANSWERS</p>
+      <h2 id="support-faq-title">자주 묻는 질문</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="faq-mark">Q</span><span>상품 상태와 등급은 어디서 확인하나요?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <p>각 상품의 상태 표시와 설명에서 확인하실 수 있습니다. 등급은 검수 시 확인한 상품 상태를 바탕으로 안내합니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-mark">Q</span><span>상품 검수는 어떤 순서로 진행되나요?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <p>사진과 상품 정보를 먼저 확인하고, 입고된 상품의 상태를 직접 살펴 검수 결과와 특징을 정리해 등록합니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-mark">Q</span><span>원하는 상품을 어떻게 찾을 수 있나요?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <p>홈페이지 상단의 카테고리를 선택하거나 검색창에 상품명을 입력해 찾아보실 수 있습니다.</p>
+        </details>
       </div>
     </section>
   </main>

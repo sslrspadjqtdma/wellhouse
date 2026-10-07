@@ -1,9 +1,25 @@
 const categoryButtons = document.querySelectorAll('.category-chip');
-const productCards = document.querySelectorAll('#product-grid .product-card');
+const productCards = document.querySelectorAll('.product-card');
 const searchInput = document.querySelector('#product-search');
 const emptyState = document.querySelector('#empty-state');
-const menuToggle = document.querySelector('.menu-toggle');
-const mainNav = document.querySelector('.main-nav');
+const bestTabs = document.querySelectorAll('.best-tab');
+const bestGrid = document.querySelector('#best-product-grid');
+const bestTitle = document.querySelector('#best-period-title');
+
+bestTabs.forEach((button) => {
+  button.addEventListener('click', () => {
+    bestTabs.forEach((tab) => tab.setAttribute('aria-pressed', String(tab === button)));
+    bestTitle.textContent = button.dataset.periodLabel;
+
+    const rankKey = `rank${button.dataset.period[0].toUpperCase()}${button.dataset.period.slice(1)}`;
+    const rankedCards = Array.from(bestGrid.children).sort((first, second) => Number(first.dataset[rankKey]) - Number(second.dataset[rankKey]));
+
+    rankedCards.forEach((card, index) => {
+      card.querySelector('.best-rank').textContent = String(index + 1).padStart(2, '0');
+      bestGrid.append(card);
+    });
+  });
+});
 
 let selectedCategory = 'all';
 
@@ -24,9 +40,7 @@ function updateProducts() {
 
 categoryButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    selectedCategory = button.dataset.category;
-    categoryButtons.forEach((item) => item.classList.toggle('is-active', item === button));
-    updateProducts();
+    window.location.href = `html/category.html?category=${button.dataset.category}`;
   });
 });
 
@@ -40,49 +54,25 @@ document.querySelectorAll('.favorite-button').forEach((button) => {
   });
 });
 
-const bestTabs = document.querySelectorAll('.best-tab');
-
-function selectBestTab(tab) {
-  bestTabs.forEach((item) => {
-    const isSelected = item === tab;
-    item.classList.toggle('is-active', isSelected);
-    item.setAttribute('aria-selected', String(isSelected));
-    item.tabIndex = isSelected ? 0 : -1;
-    document.getElementById(item.getAttribute('aria-controls')).hidden = !isSelected;
-  });
-}
-
-bestTabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => selectBestTab(tab));
-  tab.addEventListener('keydown', (event) => {
-    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-    const step = event.key === 'ArrowRight' ? 1 : -1;
-    const nextTab = bestTabs[(index + step + bestTabs.length) % bestTabs.length];
-    selectBestTab(nextTab);
-    nextTab.focus();
-  });
-});
-
-menuToggle.addEventListener('click', () => {
-  const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', String(!isOpen));
-  menuToggle.setAttribute('aria-label', isOpen ? '메뉴 열기' : '메뉴 닫기');
-  mainNav.classList.toggle('is-open', !isOpen);
-});
-
-mainNav.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    mainNav.classList.remove('is-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', '메뉴 열기');
-  });
-});
-
 document.querySelector('.load-more').addEventListener('click', (event) => {
   event.currentTarget.textContent = '새로운 보물을 준비 중이에요';
   event.currentTarget.disabled = true;
 });
 
+// 검수 단계 박스: 마우스는 CSS hover로 처리하고, 터치 기기에서는 탭할 때마다 설명을 열고 닫는다.
+const qcSteps = document.querySelectorAll('.qc-step');
+
+qcSteps.forEach((step) => {
+  step.addEventListener('click', () => {
+    if (window.matchMedia('(hover: hover)').matches) return;
+    const willOpen = !step.classList.contains('is-open');
+    qcSteps.forEach((item) => item.classList.remove('is-open'));
+    step.classList.toggle('is-open', willOpen);
+  });
+});
+
 document.querySelector('.bag-button').addEventListener('click', () => {
   window.location.href = 'html/auth.html';
 });
+// 상세 페이지에서 담은 장바구니 수량을 헤더에 표시한다.
+try { document.querySelector('.bag-count').textContent = Number(localStorage.getItem('wellhouse-cart-count')) || 0; } catch { /* 저장소 사용 불가 */ }

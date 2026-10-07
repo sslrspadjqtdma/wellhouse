@@ -1,0 +1,42 @@
+/* 푸터: CUSTOMER / BANK ACCOUNT / REFUND & EXCHANGE + 브랜드·사업자 정보 */
+.site-footer{display:block;min-height:0;padding:52px 8.6% 28px;border-top:1px solid var(--line);background:#f2ede5;color:var(--muted);font-size:14px}
+.footer-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.6fr);gap:48px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+.footer-col h2{margin:0 0 18px;font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+
+.footer-phone{display:inline-block;margin-bottom:12px;font-family:'Pretendard',var(--sans);font-size:28px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+.footer-phone:hover{color:#ad553e}
+.footer-hours,.footer-notes{list-style:none;margin:0;padding:0}
+.footer-hours li{font-size:14px;line-height:1.75;color:var(--muted)}
+.footer-hours b{margin-right:4px;font-weight:700;letter-spacing:.03em;color:#5a4a3d}
+
+.footer-bank{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;margin:0;font-size:15px}
+.footer-bank dt{font-weight:700;color:var(--ink)}
+.footer-bank dd{margin:0;color:var(--muted)}
+
+.footer-address{margin:0 0 10px;font-family:'Pretendard',var(--sans);font-size:15px;font-weight:700;line-height:1.6;color:var(--ink);word-break:keep-all}
+.footer-notes li{position:relative;padding-left:12px;font-size:14px;line-height:1.75;color:var(--muted);word-break:keep-all}
+.footer-notes li::before{content:"·";position:absolute;left:0}
+
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:24px}
+.footer-brand{display:flex;align-items:center;gap:18px;flex:0 0 auto}
+.site-footer .footer-wordmark{width:auto;font-size:24px}
+.footer-instagram{display:inline-flex;align-items:center;gap:7px;padding:7px 14px 7px 10px;border:1px solid #cdbba6;border-radius:999px;color:var(--ink);font-family:'Pretendard',var(--sans);font-size:14px;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.footer-instagram svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.footer-instagram svg .dot{fill:currentColor;stroke:none}
+.footer-instagram:hover{background:#493426;border-color:#493426;color:#fffaf4}
+.footer-legal{margin:0;font-size:12px;line-height:1.8;color:#93877b;text-align:right;word-break:keep-all}
+
+@media(max-width:900px){
+  .site-footer{padding-left:6%;padding-right:6%}
+  .footer-columns{grid-template-columns:1fr 1fr;gap:36px}
+  .footer-columns .footer-col:last-child{grid-column:1/-1}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .footer-legal{text-align:left}
+}
+
+@media(max-width:650px){
+  .site-footer{padding:40px 20px 24px}
+  .footer-columns{grid-template-columns:1fr;gap:30px;padding-bottom:30px}
+  .footer-col h2{margin-bottom:12px}
+  .footer-phone{font-size:26px}
+}

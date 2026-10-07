@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f7f5ef">
+	<title>상품 상세 — wellhouse</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/readable-text.css">
+	<link rel="stylesheet" href="../css/footer.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/product.css">
+	<script src="../js/product-art.js" defer></script>
+	<script src="../js/products.js" defer></script>
+	<script src="../js/catalog.js" defer></script>
+	<script src="../js/product-details.js" defer></script>
+	<script src="../js/product.js" defer></script>
+</head>
+<body>
+	<div class="announcement">사진부터 실물까지 검수한 빈티지, wellhouse에서 믿고 사고팔아요 <span aria-hidden="true">✳</span></div>
+	<header class="top-header">
+		<div class="util-bar">
+			<nav class="util-links" aria-label="고객 메뉴">
+				<a href="support.html">묻고 답하기</a>
+				<a href="support.html">공지사항</a>
+			</nav>
+			<div class="util-actions">
+				<label class="header-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="product-search" type="search" placeholder="상품 검색" aria-label="상품 검색" autocomplete="off"></label>
+				<a href="auth.html?mode=signup">JOIN US</a>
+				<a href="auth.html">LOGIN</a>
+				<button class="bag-button" type="button" aria-label="장바구니 보기">CART <span class="bag-count">0</span></button>
+			</div>
+		</div>
+		<a class="wordmark header-logo" href="../index.html" aria-label="wellhouse 홈">wellhouse<span class="wordmark-dot">.</span></a>
+		<nav class="header-nav" aria-label="주 메뉴">
+			<button class="category-chip" type="button" data-category="all">전체상품</button>
+			<button class="category-chip" type="button" data-category="popular">인기상품</button>
+			<div class="nav-item">
+				<button class="category-chip" type="button" data-category="fashion" aria-haspopup="true">패션</button>
+				<div class="nav-menu">
+					<ul>
+						<li><a href="category.html?category=fashion&amp;sub=티셔츠">티셔츠</a></li>
+						<li><a href="category.html?category=fashion&amp;sub=반바지">반바지</a></li>
+						<li><a href="category.html?category=fashion&amp;sub=스웨터">스웨터</a></li>
+						<li><a href="category.html?category=fashion&amp;sub=후드티">후드티</a></li>
+						<li><a href="category.html?category=fashion&amp;sub=후드집업">후드집업</a></li>
+						<li><a href="category.html?category=fashion&amp;sub=청바지">청바지</a></li>
+						<li><a href="category.html?category=fashion&amp;sub=아우터">아우터</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="nav-item">
+				<button class="category-chip" type="button" data-category="electronics" aria-haspopup="true">전자기기</button>
+				<div class="nav-menu">
+					<ul>
+						<li><a href="category.html?category=electronics&amp;sub=카메라">카메라</a></li>
+						<li><a href="category.html?category=electronics&amp;sub=오디오">오디오</a></li>
+						<li><a href="category.html?category=electronics&amp;sub=컴퓨터·게임">컴퓨터·게임</a></li>
+						<li><a href="category.html?category=electronics&amp;sub=조명">조명</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="nav-item">
+				<button class="category-chip" type="button" data-category="cd" aria-haspopup="true">CD</button>
+				<div class="nav-menu">
+					<p class="nav-menu-label">장르</p>
+					<ul>
+						<li><a href="category.html?category=cd&amp;genre=클래식">클래식</a></li>
+						<li><a href="category.html?category=cd&amp;genre=발라드">발라드</a></li>
+						<li><a href="category.html?category=cd&amp;genre=팝">팝</a></li>
+						<li><a href="category.html?category=cd&amp;genre=K팝">K팝</a></li>
+					</ul>
+					<p class="nav-menu-label">연대</p>
+					<ul>
+						<li><a href="category.html?category=cd&amp;era=1990년대">1990년대</a></li>
+						<li><a href="category.html?category=cd&amp;era=2000년대">2000년대</a></li>
+						<li><a href="category.html?category=cd&amp;era=2010년대">2010년대</a></li>
+						<li><a href="category.html?category=cd&amp;era=2020년대">2020년대</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="nav-item">
+				<button class="category-chip" type="button" data-category="props" aria-haspopup="true">소품</button>
+				<div class="nav-menu">
+					<ul>
+						<li><a href="category.html?category=props&amp;sub=인테리어 소품">인테리어 소품</a></li>
+						<li><a href="category.html?category=props&amp;sub=데스크 소품">데스크 소품</a></li>
+						<li><a href="category.html?category=props&amp;sub=컴퓨터 소품">컴퓨터 소품</a></li>
+						<li><a href="category.html?category=props&amp;sub=냉장고 소품">냉장고 소품</a></li>
+						<li><a href="category.html?category=props&amp;sub=수납·정리">수납·정리</a></li>
+						<li><a href="category.html?category=props&amp;sub=키친·테이블">키친·테이블</a></li>
+					</ul>
+				</div>
+			</div>
+			<a href="../index.html#story">브랜드 스토리</a>
+			<a href="../index.html#inspection">검수과정</a>
+		</nav>
+	</header>
+
+	<main class="pd-main" id="pd-root">
+		<p class="empty-state">상품 정보를 불러오는 중이에요…</p>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-columns">
+			<section class="footer-col" aria-labelledby="footer-customer">
+				<h2 id="footer-customer">CUSTOMER</h2>
+				<a class="footer-phone" href="tel:020000000">02-000-0000</a>
+				<ul class="footer-hours">
+					<li><b>OPERATING</b> PM 12:00 ~ PM 08:00</li>
+					<li><b>BREAK</b> PM 03:00 ~ PM 03:30</li>
+					<li>매주 월요일 및 공휴일 휴무</li>
+				</ul>
+			</section>
+			<section class="footer-col" aria-labelledby="footer-bank">
+				<h2 id="footer-bank">BANK ACCOUNT</h2>
+				<dl class="footer-bank">
+					<dt>OO은행</dt><dd>000000-00-000000</dd>
+					<dt>예금주</dt><dd>홍길동(wellhouse)</dd>
+				</dl>
+			</section>
+			<section class="footer-col" aria-labelledby="footer-refund">
+				<h2 id="footer-refund">REFUND &amp; EXCHANGE</h2>
+				<p class="footer-address">(00000) 서울특별시 마포구 와우산로 00, 1층 wellhouse</p>
+				<ul class="footer-notes">
+					<li>반품·교환 전, 꼭 유의사항을 확인해 주세요.</li>
+					<li>상품 발송 후 배송 정보는 택배사 사이트에서 조회할 수 있어요.</li>
+				</ul>
+			</section>
+		</div>
+		<div class="footer-bottom">
+			<div class="footer-brand">
+				<a class="wordmark footer-wordmark" href="../index.html">wellhouse<span class="wordmark-dot">.</span></a>
+				<a class="footer-instagram" href="https://www.instagram.com/wellhouse.vintage/" target="_blank" rel="noopener" aria-label="wellhouse 인스타그램">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" class="dot"/></svg>
+					@wellhouse.vintage
+				</a>
+			</div>
+			<p class="footer-legal">상호 wellhouse · 대표 홍길동 · 사업자등록번호 000-00-00000 · 매장 서울특별시 마포구 와우산로 00, 1층 · hello@wellhouse.kr<br>© 2026 wellhouse. All rights reserved.</p>
+		</div>
+	</footer>
+	<div class="pd-toast" id="pd-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
