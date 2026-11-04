@@ -1,0 +1,62 @@
+.inspection-guide-page{min-height:100vh}
+.inspection-guide-header{height:82px;padding:0 8.6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper)}
+.inspection-guide-header .wordmark{font-size:29px}
+.inspection-home-link{border-bottom:1px solid #b8aa9d;padding-bottom:5px;color:var(--muted);font-size:14px;transition:color .2s}
+.inspection-home-link:hover{color:#ad553e}
+.inspection-guide-hero{padding:82px 12% 88px;background:radial-gradient(ellipse at 82% 45%,rgba(190,153,111,.15),transparent 36%),var(--paper)}
+.inspection-guide-hero .eyebrow,.inspection-guide-heading .eyebrow{margin-bottom:18px}
+.inspection-guide-hero h1{margin:0;font:400 clamp(38px,5vw,62px)/1.4 var(--serif);letter-spacing:-.03em}
+.inspection-guide-hero h1 em{color:var(--olive);font-style:normal}
+.inspection-guide-hero>p:not(.eyebrow){max-width:680px;margin:22px 0 25px;color:var(--muted);font-size:16px;line-height:1.9;word-break:keep-all}
+.inspection-guide-hero>a{display:inline-flex;align-items:center;gap:14px;padding-bottom:6px;border-bottom:1px solid #b8aa9d;font-size:14px;font-weight:600}
+.inspection-guide-hero>a span{color:#ad553e}
+.inspection-guide-steps{padding:78px 12% 86px;background:#604633;color:var(--paper)}
+.inspection-guide-heading{max-width:720px;margin-bottom:32px}
+.inspection-guide-heading .eyebrow{color:var(--olive)}
+.inspection-guide-steps .inspection-guide-heading .eyebrow{color:var(--lime)}
+.inspection-guide-heading h2{margin:0;font:400 36px/1.45 var(--serif)}
+.inspection-guide-heading>p:last-child{margin:12px 0 0;color:var(--muted);font-size:15px;line-height:1.8;word-break:keep-all}
+.inspection-guide-steps .inspection-guide-heading>p:last-child{color:rgba(250,248,244,.78)}
+.inspection-guide-list{list-style:none;margin:0;padding:0;border-top:1px solid rgba(250,248,244,.28)}
+.inspection-guide-list li{display:grid;grid-template-columns:115px 1fr;gap:20px;padding:27px 8px;border-bottom:1px solid rgba(250,248,244,.28)}
+.inspection-guide-number{padding-top:5px;color:var(--lime);font-size:12px;font-weight:700;letter-spacing:.13em}
+.inspection-guide-list h3{margin:0 0 9px;font:700 21px/1.5 var(--serif);color:#fffaf4}
+.inspection-guide-list p{max-width:760px;margin:0;color:rgba(250,248,244,.8);font-size:15px;line-height:1.9;word-break:keep-all}
+.inspection-guide-grades{padding:78px 12% 84px;background:#fffdfa}
+.inspection-guide-grades .inspection-guide-heading h2{font-size:34px}
+.inspection-guide-grade-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;list-style:none;margin:30px 0 0;padding:0}
+.inspection-guide-grade-list li{min-height:158px;padding:19px 15px;border:1px solid var(--line);background:var(--paper)}
+.inspection-guide-grade-list li>span{display:grid;place-items:center;width:40px;height:40px;margin-bottom:14px;border-radius:50%;background:var(--lime);color:#3d2a1d;font-size:18px;font-weight:800}
+.inspection-guide-grade-list h3{margin:0 0 6px;font-family:'Pretendard',var(--sans);font-size:16px;font-weight:700}
+.inspection-guide-grade-list p{margin:0;color:var(--muted);font-size:13px;line-height:1.65;word-break:keep-all}
+.inspection-guide-note{margin:18px 0 0;color:var(--muted);font-size:13px;line-height:1.8;word-break:keep-all}
+.inspection-guide-closing{padding:34px 20px;background:#eee6dc;text-align:center}
+.inspection-guide-closing p{margin:0 0 14px;font:400 21px/1.6 var(--serif)}
+.inspection-guide-closing a{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:0 19px;background:var(--olive);color:var(--paper);font-size:13px;font-weight:700}
+@media(max-width:900px){
+	.inspection-guide-grade-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.inspection-guide-grade-list li{min-height:130px}
+}
+@media(max-width:760px){
+	.inspection-guide-header{height:68px;padding:0 22px}
+	.inspection-guide-header .wordmark{font-size:25px}
+	.inspection-home-link{font-size:12px}
+	.inspection-guide-hero{padding:54px 25px 60px}
+	.inspection-guide-hero h1{font-size:clamp(36px,9vw,50px)}
+	.inspection-guide-hero>p:not(.eyebrow){margin-top:18px;font-size:15px}
+	.inspection-guide-steps{padding:56px 25px 62px}
+	.inspection-guide-heading h2,.inspection-guide-grades .inspection-guide-heading h2{font-size:29px}
+	.inspection-guide-heading>p:last-child{font-size:14px}
+	.inspection-guide-list li{grid-template-columns:1fr;gap:8px;padding:22px 2px}
+	.inspection-guide-list h3{font-size:18px}
+	.inspection-guide-list p{font-size:14px}
+	.inspection-guide-grades{padding:56px 25px 62px}
+	.inspection-guide-grade-list{grid-template-columns:1fr;gap:8px;margin-top:22px}
+	.inspection-guide-grade-list li{display:flex;align-items:center;gap:13px;min-height:0;padding:12px 14px}
+	.inspection-guide-grade-list li>span{flex:0 0 auto;width:36px;height:36px;margin:0;font-size:16px}
+	.inspection-guide-grade-list h3{font-size:15px}
+	.inspection-guide-grade-list p{font-size:13px}
+	.inspection-guide-note{font-size:12px}
+	.inspection-guide-closing p{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.inspection-home-link{transition:none}}

@@ -46,3 +46,7 @@ button{color:inherit}
 @media(max-width:650px){.main-nav{font-size:14px}.header-actions{font-size:11px}.hero-description{font-size:13px}.hero-action{font-size:12px}.section-heading h2{font-size:28px}.text-link{font-size:11px}.product-meta{font-size:9px}.product-card h3,.product-bottom strong{font-size:13px}.product-size{font-size:10px}.condition-tag{font-size:8px}.grade-item h4{font-size:13px}.grade-item p,.grade-heading>p:last-child{font-size:11px}.inspection-step p{font-size:11px}.site-footer{font-size:10px}}
 @media(max-width:650px){.site-header{height:auto;padding:0 18px}.header-main{height:65px;justify-content:space-between;gap:0}.category-section{min-height:0;padding:10px 0 12px;grid-template-columns:1fr;gap:8px;border-top:1px solid var(--line)}.category-section .section-kicker{display:none}.category-row{gap:4px;overflow-x:auto}.search-box{height:36px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.product-card{animation:none}
+.image-caption{transform:rotate(-1.5deg)}
+.hero-sticker{transform:rotate(7deg)}
+.best-card:hover .best-image img,.sale-card:hover .sale-image img,.product-card:hover .product-image img{transform:scale(1.025)}
