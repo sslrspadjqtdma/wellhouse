@@ -75,7 +75,7 @@ const STATUS_LABEL = { ok: '양호', minor: '경미', issue: '흠집' };
 function buildInspection(product) {
   const grade = product.grade || CONDITION_TO_GRADE[product.condition] || 'B';
   const seed = seedOf(product.slug);
-  const checklist = product.format === 'LP판' ? LP_CHECKLIST : CHECKLISTS[product.categoryKey];
+  const checklist = product.format === 'LP' ? LP_CHECKLIST : CHECKLISTS[product.categoryKey];
   const adjustable = checklist.map((item, index) => index).filter((index) => !checklist[index].always);
   const [first, second] = pickMany(adjustable, seed, 2);
 
@@ -183,7 +183,7 @@ function buildDetail(product) {
     [product.categoryKey === 'fashion' ? '사이즈' : '옵션', product.option],
   ];
 
-  return { intro, story: copy.story, points: product.format === 'LP판' ? LP_CARE_POINTS : CARE_POINTS[product.categoryKey], specs, sizeTable: buildSizeTable(product) };
+  return { intro, story: copy.story, points: product.format === 'LP' ? LP_CARE_POINTS : CARE_POINTS[product.categoryKey], specs, sizeTable: buildSizeTable(product) };
 }
 
 // 예시 후기 문구(카테고리별)
@@ -229,7 +229,7 @@ const REVIEWER_NAMES = ['minj**', 'seo***', 'vint**', 'haru**', 'jiwo**', 'oldl*
 function buildReviews(product) {
   const seed = seedOf(product.slug);
   const count = 3 + (seed % 2);
-  const pool = product.format === 'LP판' ? LP_REVIEW_POOL : REVIEW_POOL[product.categoryKey];
+  const pool = product.format === 'LP' ? LP_REVIEW_POOL : REVIEW_POOL[product.categoryKey];
   return pickMany(pool, seed, count).map(([rating, text], index) => ({
     rating,
     text,
@@ -268,13 +268,13 @@ const QNA_POOL = {
 };
 const LP_QNA_POOL = [
   ['레코드 재생 테스트는 했나요?', '네, 검수 과정에서 양면 재생 상태를 확인하고 결과를 상품 리포트에 적어두었어요.'],
-  ['턴테이블 없이도 들을 수 있나요?', 'LP판은 턴테이블이 있어야 재생할 수 있어요. 재생 속도는 상품 옵션을 확인해 주세요.'],
+  ['턴테이블 없이도 들을 수 있나요?', 'LP는 턴테이블이 있어야 재생할 수 있어요. 재생 속도는 상품 옵션을 확인해 주세요.'],
   ['재킷과 속지도 함께 오나요?', '상품 구성에 포함된 재킷과 속지는 검수 리포트 및 상세 사진에 안내해 두었어요.'],
 ];
 
 function buildQna(product) {
   const seed = seedOf(product.slug);
-  const categoryQuestions = product.format === 'LP판' ? LP_QNA_POOL : QNA_POOL[product.categoryKey];
+  const categoryQuestions = product.format === 'LP' ? LP_QNA_POOL : QNA_POOL[product.categoryKey];
   const picked = [...pickMany(categoryQuestions, seed, 2), ...pickMany(QNA_POOL.common, seed, 1)];
   return picked.map(([question, answer], index) => ({
     question,

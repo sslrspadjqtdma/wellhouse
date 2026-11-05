@@ -76,6 +76,24 @@ function render() {
   emptyState.hidden = visible.length > 0;
 }
 
+function visibleCategoryFilters() {
+  if (categoryKey !== 'cd') return category.filters;
+
+  const filters = Object.fromEntries(category.filters.map((filter) => [filter.key, filter]));
+  const genreFilter = activeFilters.format === 'LP' ? filters.lpGenre : filters.genre;
+  return [filters.format, genreFilter, filters.era];
+}
+
+function renderFilterGroups() {
+  filterGroups.innerHTML = visibleCategoryFilters().map((filter) => `
+  <div class="filter-group" role="group" aria-label="${filter.label}">
+    <span class="filter-label">${filter.label}</span>
+    <div class="filter-chips${isOverview(categoryKey) ? ' has-dropdown' : ''}">
+      ${['all', ...filter.options].map((option) => (isOverview(categoryKey) && option !== 'all' ? dropdownTemplate(option) : chipTemplate(filter.key, option))).join('')}
+    </div>
+  </div>`).join('');
+}
+
 // preset: 주소(?sub=티셔츠, ?genre=발라드 등)로 넘어온 소분류를 처음부터 선택해 둔다.
 function showCategory(key, preset = {}) {
   categoryKey = isOverview(key) || CATEGORY_DATA[key] ? key : 'all';
@@ -91,14 +109,7 @@ function showCategory(key, preset = {}) {
 
   if (isOverview(categoryKey)) SUB_FILTER_KEYS.forEach((key) => { activeFilters[key] = 'all'; });
 
-  filterGroups.innerHTML = category.filters.map((filter) => `
-  <div class="filter-group" role="group" aria-label="${filter.label}">
-    <span class="filter-label">${filter.label}</span>
-    <div class="filter-chips${isOverview(categoryKey) ? ' has-dropdown' : ''}">
-      ${['all', ...filter.options].map((option) => (isOverview(categoryKey) && option !== 'all' ? dropdownTemplate(option) : chipTemplate(filter.key, option))).join('')}
-    </div>
-  </div>`).join('');
-
+  renderFilterGroups();
   updateFilterUI();
   render();
 }
@@ -157,7 +168,12 @@ filterGroups.addEventListener('click', (event) => {
     menuItem.blur();
   } else if (chip) {
     if (chip.dataset.filter === 'categoryName') resetSubFilters();
+    if (chip.dataset.filter === 'format') {
+      activeFilters.genre = 'all';
+      activeFilters.lpGenre = 'all';
+    }
     activeFilters[chip.dataset.filter] = chip.dataset.value;
+    if (chip.dataset.filter === 'format') renderFilterGroups();
   } else {
     return;
   }
