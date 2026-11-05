@@ -62,12 +62,20 @@ const CHECKLISTS = {
   ],
 };
 
+const LP_CHECKLIST = [
+  { label: '레코드 면', ok: '눈에 띄는 흠집 없음', minor: '빛에 비추면 보이는 미세한 헤어라인', issue: '가는 스크래치 2~3줄(재생 영향 없음)' },
+  { label: '재생 테스트', ok: '양면 모두 끊김 없이 재생', always: true },
+  { label: '재킷·속지', ok: '찢김·눌림 없음', minor: '모서리에 가벼운 사용감', issue: '재킷 한쪽 모서리에 눌림 자국' },
+  { label: '라벨·인쇄', ok: '변색·들뜸 없음', minor: '라벨 가장자리가 살짝 바램', issue: '라벨에 작은 얼룩' },
+  { label: '구성품', ok: '기본 속지 포함', minor: '원래 속지 없음', issue: '가사지 미포함' },
+];
+
 const STATUS_LABEL = { ok: '양호', minor: '경미', issue: '흠집' };
 
 function buildInspection(product) {
   const grade = product.grade || CONDITION_TO_GRADE[product.condition] || 'B';
   const seed = seedOf(product.slug);
-  const checklist = CHECKLISTS[product.categoryKey];
+  const checklist = product.format === 'LP판' ? LP_CHECKLIST : CHECKLISTS[product.categoryKey];
   const adjustable = checklist.map((item, index) => index).filter((index) => !checklist[index].always);
   const [first, second] = pickMany(adjustable, seed, 2);
 
@@ -129,6 +137,7 @@ const CARE_POINTS = {
   cd: ['전 트랙 재생 테스트를 마친 디스크예요.', '케이스를 깨끗이 닦아 새 비닐에 담아 보내드려요.', '중고 음반 특성상 부클릿에 세월의 흔적이 있을 수 있어요.'],
   props: ['오래된 제품 특성상 크기와 색에 개체 차이가 있어요.', '세척·소독을 마친 뒤 완충재로 꼼꼼히 포장해 보내드려요.', '사용 흔적은 검수 리포트에 빠짐없이 적어두었어요.'],
 };
+const LP_CARE_POINTS = ['레코드의 양면 재생 테스트를 마쳤어요.', '먼지와 휨을 막을 수 있도록 세워서 보관해 주세요.', '빈티지 음반 특성상 재킷과 속지에 세월의 흔적이 있을 수 있어요.'];
 
 const TOP_SIZES = { S: [66, 44, 50, 59], M: [69, 46, 53, 61], L: [72, 48, 56, 62], XL: [75, 51, 60, 64], FREE: [70, 52, 58, 58] };
 
@@ -174,7 +183,7 @@ function buildDetail(product) {
     [product.categoryKey === 'fashion' ? '사이즈' : '옵션', product.option],
   ];
 
-  return { intro, story: copy.story, points: CARE_POINTS[product.categoryKey], specs, sizeTable: buildSizeTable(product) };
+  return { intro, story: copy.story, points: product.format === 'LP판' ? LP_CARE_POINTS : CARE_POINTS[product.categoryKey], specs, sizeTable: buildSizeTable(product) };
 }
 
 // 예시 후기 문구(카테고리별)
@@ -208,12 +217,20 @@ const REVIEW_POOL = {
     [4, '자연스러운 사용감이 오히려 빈티지 느낌이라 좋아요.'],
   ],
 };
+const LP_REVIEW_POOL = [
+  [5, '레코드 면과 재킷 상태가 설명과 같고, 재생도 잘돼요.'],
+  [5, '찾던 분위기의 LP를 좋은 상태로 구했어요. 포장도 꼼꼼했어요.'],
+  [4, '재킷 모서리에 사용감은 있지만 음반은 깨끗하게 잘 재생돼요.'],
+  [5, '빈티지한 음색이 마음에 들어요. 검수 내용도 자세해서 좋았습니다.'],
+  [4, '속지는 없지만 상품 설명에 적혀 있어 괜찮았어요.'],
+];
 const REVIEWER_NAMES = ['minj**', 'seo***', 'vint**', 'haru**', 'jiwo**', 'oldl***', 'yuna**', 'dami**'];
 
 function buildReviews(product) {
   const seed = seedOf(product.slug);
   const count = 3 + (seed % 2);
-  return pickMany(REVIEW_POOL[product.categoryKey], seed, count).map(([rating, text], index) => ({
+  const pool = product.format === 'LP판' ? LP_REVIEW_POOL : REVIEW_POOL[product.categoryKey];
+  return pickMany(pool, seed, count).map(([rating, text], index) => ({
     rating,
     text,
     name: REVIEWER_NAMES[(seed + index * 3) % REVIEWER_NAMES.length],
@@ -249,10 +266,16 @@ const QNA_POOL = {
     ['매장에서 직접 보고 살 수 있나요?', '네, 배송 방법에서 ‘매장 픽업’을 선택하시면 영업시간에 매장에서 상품을 확인하고 받아 가실 수 있어요.'],
   ],
 };
+const LP_QNA_POOL = [
+  ['레코드 재생 테스트는 했나요?', '네, 검수 과정에서 양면 재생 상태를 확인하고 결과를 상품 리포트에 적어두었어요.'],
+  ['턴테이블 없이도 들을 수 있나요?', 'LP판은 턴테이블이 있어야 재생할 수 있어요. 재생 속도는 상품 옵션을 확인해 주세요.'],
+  ['재킷과 속지도 함께 오나요?', '상품 구성에 포함된 재킷과 속지는 검수 리포트 및 상세 사진에 안내해 두었어요.'],
+];
 
 function buildQna(product) {
   const seed = seedOf(product.slug);
-  const picked = [...pickMany(QNA_POOL[product.categoryKey], seed, 2), ...pickMany(QNA_POOL.common, seed, 1)];
+  const categoryQuestions = product.format === 'LP판' ? LP_QNA_POOL : QNA_POOL[product.categoryKey];
+  const picked = [...pickMany(categoryQuestions, seed, 2), ...pickMany(QNA_POOL.common, seed, 1)];
   return picked.map(([question, answer], index) => ({
     question,
     answer,

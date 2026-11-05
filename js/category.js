@@ -12,7 +12,7 @@ const SORTERS = {
 const ALL_CATEGORY = {
   eyebrow: 'ALL PRODUCTS',
   title: '전체 상품',
-  description: '패션, 전자기기, CD, 소품까지 wellhouse의 모든 빈티지 상품을 한눈에 살펴보세요.',
+  description: '패션, 전자기기, CD·LP, 소품까지 wellhouse의 모든 빈티지 상품을 한눈에 살펴보세요.',
   filters: [{ key: 'categoryName', label: '카테고리', options: Object.values(CATEGORY_DATA).map((data) => data.title) }],
 };
 productsByCategory.all = allProducts;
@@ -48,8 +48,8 @@ const categoryButtons = document.querySelectorAll('.category-chip');
 
 function cardTemplate(product) {
   const meta = product.album ? product.artist : product.shop;
-  const detail = product.album ? `${product.genre} · ${product.year}` : product.sub;
-  const tag = isOverview(categoryKey) ? `${product.categoryName} · ${product.album ? product.genre : detail}` : detail;
+  const detail = product.album ? `${product.format} · ${product.genre} · ${product.year}` : product.sub;
+  const tag = isOverview(categoryKey) ? `${product.categoryName} · ${product.album ? `${product.format} · ${product.genre}` : detail}` : detail;
   const isFavorite = favorites.has(product.id);
 
   return `

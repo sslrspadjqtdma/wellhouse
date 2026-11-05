@@ -14,6 +14,7 @@ const productsByCategory = Object.fromEntries(Object.entries(CATEGORY_DATA).map(
 
   return {
     ...product,
+    format: product.format || (key === 'cd' ? 'CD' : undefined),
     id: nextId++,
     slug: `${key}-${index}`,
     bg,
