@@ -65,6 +65,8 @@ html/category.html        카테고리 목록 (?category=all|popular|fashion|ele
 html/product.html         상품 상세 (?id=fashion-0 형태)
 html/auth.html            로그인/회원가입 (아이디 찾기 → 비밀번호 찾기 순서)
 html/support.html         이용 안내와 Q&A
+html/about.html           브랜드 스토리
+html/inspection.html      검수 과정 안내
 
 css/style.css             원본 기본 스타일 (압축된 한 줄 형태, 되도록 직접 수정하지 않음)
 css/readable-text.css     글자 크기·가독성 덮어쓰기, 상품 카드/할인/섹션 제목 강조
@@ -83,6 +85,7 @@ js/product-details.js     상세 콘텐츠 생성: 등급, 검수 리포트, 상
 js/product.js             상세 페이지 렌더링과 상호작용
 js/main.js                홈 페이지 동작
 js/auth.js                로그인 페이지 동작
+js/back-to-top.js         모든 페이지 공통 맨 위로 버튼
 ```
 
 스크립트 로딩 순서(카테고리/상세 페이지): `product-art.js → products.js → catalog.js → (product-details.js) → category.js / product.js`
@@ -92,10 +95,12 @@ js/auth.js                로그인 페이지 동작
 ## 4. 주요 기능과 동작
 
 ### 헤더 (index, category, product 공통)
-- 위 유틸 바: 왼쪽 `묻고 답하기 · 공지사항`, 오른쪽 `상품 검색 · JOIN US · LOGIN · CART(개수)`
+- 위 유틸 바: 왼쪽 `Q&A · 공지사항`, 각 링크는 안내 페이지의 해당 영역으로 이동, 오른쪽 `상품 검색 · JOIN US · LOGIN · CART(개수)`
+- 안내 페이지의 공지사항과 Q&A는 데스크톱에서 세로 구분선으로 나란히 표시하고, 모바일에서는 위아래로 배치한다.
 - 가운데 큰 로고 `wellhouse.`
-- 메뉴 순서: **전체상품 · 인기상품 · 패션 · 전자기기 · CD · 소품 · 브랜드 스토리 · 검수과정**
-- 패션/전자기기/CD/소품에 마우스를 올리면 소분류 드롭다운이 열린다. 클릭 시 `category.html?category=fashion&sub=청바지` 처럼 이동해 해당 소분류가 선택된 상태로 열린다. (모바일은 드롭다운 숨김, 메뉴 가로 스크롤)
+- 메뉴 순서: **전체상품 · 인기상품 · 패션 · 전자기기 · CD·LP · 소품 · 브랜드 스토리 · 검수과정**
+- 패션/전자기기/CD·LP/소품에 마우스를 올리면 소분류 드롭다운이 열린다. 클릭 시 `category.html?category=fashion&sub=청바지` 처럼 이동해 해당 소분류가 선택된 상태로 열린다. (모바일은 드롭다운 숨김, 메뉴 가로 스크롤)
+- CD와 LP는 헤더 메뉴 하나(`CD·LP`)를 공유한다. 장르 링크는 CD와 LP 상품 데이터를 같은 장르 기준으로 필터링하고, 연도 링크는 두 형식에 공통으로 적용한다.
 - 카테고리 버튼은 `.category-chip[data-category]`로 JS가 찾는다. 클래스명을 바꾸지 말 것.
 - 장바구니 개수는 `localStorage['wellhouse-cart-count']`에 저장하고 모든 페이지 헤더에 표시한다.
 
@@ -104,7 +109,7 @@ js/auth.js                로그인 페이지 동작
 |---|---|
 | 패션 | 티셔츠, 반바지, 스웨터, 후드티, 후드집업, 청바지, 아우터 |
 | 전자기기 | 카메라, 오디오, 컴퓨터·게임, 조명 |
-| CD | 장르(클래식, 발라드, 팝, K팝) + 연대(1990년대~2020년대) 두 가지 필터 |
+| CD·LP | 음반 형태(CD/LP), 장르(클래식, 발라드, 팝, K팝), 연대(1990년대~2020년대) |
 | 소품 | 인테리어 소품, 데스크 소품, 컴퓨터 소품, 냉장고 소품, 수납·정리, 키친·테이블 |
 
 ### 카테고리 페이지 (`html/category.html`)
@@ -112,7 +117,8 @@ js/auth.js                로그인 페이지 동작
 - **전체상품**: 모든 상품 + 카테고리 칩. 칩에 마우스를 올리면 그 카테고리의 소분류 메뉴가 열린다.
 - **인기상품**: 판매량 상위 20개, 카드에 `BEST 01` 배지.
 - 정렬은 안정 정렬이라 기준이 같으면 원래 순서(추천·인기 순)를 유지한다.
-- URL 파라미터: `category`, `sub` / `genre` / `era`, `q`(검색어)
+- 장르와 연도는 각각 복수 선택 가능. 같은 그룹 내 선택은 OR, 장르·연도·음반 형태 사이에는 AND 조건으로 적용한다. 한 그룹의 `전체`만 초기화되며 다른 그룹의 선택은 유지한다.
+- URL 파라미터: `category`, `sub`, `genre`, `era`, `format`, `q`(검색어). 복수 장르·연도는 같은 파라미터를 반복해 표현한다(예: `?category=cd&genre=팝&genre=클래식&era=1990년대&era=2020년대`). 과거 LP 장르 URL의 `lpGenre`도 호환한다.
 
 ### 상품 상세 페이지 (`html/product.html?id=...`)
 - 상단: 경로(Home › 카테고리 › 소분류), 사진 + 디테일 확대 썸네일, 상품명, 등급 배지, 가격·할인, 판매처·옵션, 배송 방법(택배 3,500원 / 100,000원 이상 무료 / 매장 픽업 무료), 재고, 수량, 총액, 구매하기·장바구니·찜·공유하기
@@ -143,6 +149,10 @@ tshirt, shorts, sweater, hoodie, zipup, jeans, jacket, camera, radio, cassette, 
 
 ### 헤더/푸터 수정
 헤더와 푸터 마크업이 `index.html`, `html/category.html`, `html/product.html`에 각각 들어 있다. **세 파일 모두 같이 수정**한다. (경로 접두사: 홈은 `html/`, 하위 페이지는 없음 또는 `../`)
+
+### 맨 위로 버튼
+- `js/back-to-top.js`를 홈 및 모든 하위 페이지에서 로드하고, 버튼 스타일은 `css/style.css`에 둔다.
+- 320px 이상 스크롤하면 화면 오른쪽 아래 버튼을 표시한다. 클릭 시 최상단으로 이동하며 `prefers-reduced-motion`을 따른다.
 
 ---
 
@@ -203,3 +213,7 @@ tshirt, shorts, sweater, hoodie, zipup, jeans, jacket, camera, radio, cassette, 
 17. 모든 섹션 제목 크고 굵게
 18. 깨진 유리잔 이미지 디버깅(404) 후 교체
 19. 상품 상세 페이지 제작: 최종 등급, 등급 이유, 상세설명, 후기, Q&A
+20. 안내 페이지 Q&A 표기를 명확히 하고 공지사항·Q&A 반응형 배치 정리
+21. 헤더의 CD와 LP를 `CD·LP` 하나의 메뉴로 통합하고 장르·연도 링크를 정리
+22. CD·LP 장르를 동일한 클래식·발라드·팝·K팝으로 통일하고 장르와 연도 각각 복수 선택 지원 (각 그룹 내 OR, 그룹 간 AND)
+23. 모든 페이지에 스크롤 위치에 따라 나타나는 반응형 맨 위로 버튼 추가

@@ -54,3 +54,9 @@ button{color:inherit}
 .photo-one{width:68%;height:90%}
 .photo-two{width:37%;height:52%}
 @media(max-width:650px){.hero-art{margin-top:20px}.photo-one{width:68%;height:90%}.photo-two{width:38%;height:51%}}
+.back-to-top{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:100;display:grid;place-items:center;width:48px;height:48px;border:1px solid #ded5ca;border-radius:50%;background:#faf8f4;color:#493426;box-shadow:0 4px 16px rgba(48,37,30,.14);cursor:pointer;opacity:1;transform:translateY(0);transition:opacity .2s,transform .2s,background .2s,color .2s}
+.back-to-top:hover{background:#493426;color:#fffaf4}
+.back-to-top[hidden]{display:none}
+.back-to-top:focus-visible{outline:2px solid #ad553e;outline-offset:3px}
+.back-to-top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:650px){.back-to-top{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));width:44px;height:44px}}
