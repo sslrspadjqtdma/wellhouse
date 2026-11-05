@@ -40,7 +40,9 @@ function updateProducts() {
 
 categoryButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    window.location.href = `html/category.html?category=${button.dataset.category}`;
+    const params = new URLSearchParams({ category: button.dataset.category });
+    if (button.dataset.format) params.set('format', button.dataset.format);
+    window.location.href = `html/category.html?${params}`;
   });
 });
 

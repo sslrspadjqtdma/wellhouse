@@ -262,7 +262,10 @@ function render() {
   const subKey = product.sub ? 'sub' : 'genre';
 
   document.title = `${product.name} — wellhouse`;
-  document.querySelectorAll('.category-chip').forEach((chip) => chip.classList.toggle('is-active', chip.dataset.category === product.categoryKey));
+  document.querySelectorAll('.category-chip').forEach((chip) => chip.classList.toggle(
+    'is-active',
+    chip.dataset.category === product.categoryKey && (!chip.dataset.format || chip.dataset.format === product.format),
+  ));
 
   root.innerHTML = `
     <nav class="pd-breadcrumb" aria-label="현재 위치">
@@ -415,7 +418,11 @@ function bindInteractions(stock) {
 
 // 헤더 공통 동작
 document.querySelectorAll('.category-chip').forEach((chip) => {
-  chip.addEventListener('click', () => { window.location.href = `category.html?category=${chip.dataset.category}`; });
+  chip.addEventListener('click', () => {
+    const params = new URLSearchParams({ category: chip.dataset.category });
+    if (chip.dataset.format) params.set('format', chip.dataset.format);
+    window.location.href = `category.html?${params}`;
+  });
 });
 document.querySelector('#product-search').addEventListener('keydown', (event) => {
   if (event.key === 'Enter') window.location.href = `category.html?category=all&q=${encodeURIComponent(event.target.value.trim())}`;

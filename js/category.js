@@ -96,6 +96,7 @@ function renderFilterGroups() {
 
 // preset: 주소(?sub=티셔츠, ?genre=발라드 등)로 넘어온 소분류를 처음부터 선택해 둔다.
 function showCategory(key, preset = {}) {
+  if (preset.format === 'LP판') preset = { ...preset, format: 'LP' };
   categoryKey = isOverview(key) || CATEGORY_DATA[key] ? key : 'all';
   category = OVERVIEWS[categoryKey] || CATEGORY_DATA[categoryKey];
   products = productsByCategory[categoryKey];
@@ -105,7 +106,10 @@ function showCategory(key, preset = {}) {
   document.querySelector('#category-eyebrow').textContent = category.eyebrow;
   document.querySelector('#category-title').textContent = category.title;
   document.querySelector('#category-description').textContent = category.description;
-  categoryButtons.forEach((button) => button.classList.toggle('is-active', button.dataset.category === categoryKey));
+  categoryButtons.forEach((button) => button.classList.toggle(
+    'is-active',
+    button.dataset.category === categoryKey && (!button.dataset.format || button.dataset.format === activeFilters.format),
+  ));
 
   if (isOverview(categoryKey)) SUB_FILTER_KEYS.forEach((key) => { activeFilters[key] = 'all'; });
 
@@ -210,7 +214,11 @@ function navigate(url) {
 }
 
 categoryButtons.forEach((button) => {
-  button.addEventListener('click', () => navigate(`category.html?category=${button.dataset.category}`));
+  button.addEventListener('click', () => {
+    const params = new URLSearchParams({ category: button.dataset.category });
+    if (button.dataset.format) params.set('format', button.dataset.format);
+    navigate(`category.html?${params}`);
+  });
 });
 
 // 헤더 드롭다운의 소분류 링크도 같은 화면에서 바로 필터링한다.
