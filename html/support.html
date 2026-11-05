@@ -4,65 +4,114 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="wellhouse 공지사항과 자주 묻는 질문, 상품 문의 안내입니다.">
   <title>공지사항 및 Q&amp;A — wellhouse</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/readable-text.css">
+  <link rel="stylesheet" href="../css/support.css">
+  <script src="../js/support.js" defer></script>
 </head>
-<body>
-  <header class="support-page-header">
+<body class="support-page">
+  <header class="support-header">
     <a class="wordmark" href="../index.html" aria-label="wellhouse 홈">wellhouse<span class="wordmark-dot">.</span></a>
-    <a class="support-home-link" href="../index.html"><span aria-hidden="true">←</span> 홈페이지로 돌아가기</a>
+    <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 홈페이지로 돌아가기</a>
   </header>
-  <main class="support-page-main">
-    <p class="eyebrow">WELLHOUSE GUIDE</p>
-    <h1>공지사항 및 Q&amp;A</h1>
-    <p class="support-page-intro">상품을 고르고 이용하실 때 참고하실 내용을 안내해 드립니다.</p>
-
-    <div class="support-content-grid">
-      <section class="support-column support-notices" id="support-notice" aria-labelledby="support-notice-title">
-        <p class="eyebrow">NOTICE</p>
-        <h2 id="support-notice-title">공지사항</h2>
-        <div class="notice-entries">
-          <article class="notice-entry">
-            <p class="notice-type">검수 안내</p>
-            <h3>상품 상태와 등급을 꼼꼼히 확인합니다</h3>
-            <p>등록된 사진과 상품 정보를 먼저 살펴본 뒤 실물의 사용감, 오염, 흠집과 작동 상태를 확인합니다. 검수 결과와 상품별 특징은 각 상품 설명에서 확인하실 수 있습니다.</p>
-          </article>
-          <article class="notice-entry">
-            <p class="notice-type">상품 안내</p>
-            <h3>빈티지 상품은 하나씩 상태가 다릅니다</h3>
-            <p>오래 사용된 상품은 같은 종류라도 색감이나 사용 흔적이 서로 다를 수 있습니다. 구매 전 상품 사진과 설명을 함께 확인해 주세요.</p>
-          </article>
-          <article class="notice-entry">
-            <p class="notice-type">새 상품</p>
-            <h3>새로운 빈티지 상품이 꾸준히 등록됩니다</h3>
-            <p>상품 목록은 새롭게 발견한 아이템에 따라 업데이트됩니다. 카테고리와 검색을 이용해 관심 있는 상품을 살펴보세요.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="support-column support-faq" id="support-qna" aria-labelledby="support-faq-title">
-        <p class="eyebrow">QUESTIONS &amp; ANSWERS</p>
-        <h2 id="support-faq-title">Q&amp;A</h2>
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary><span class="faq-mark">Q</span><span>상품 상태와 등급은 어디서 확인하나요?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
-            <p>각 상품의 상태 표시와 설명에서 확인하실 수 있습니다. 등급은 검수 시 확인한 상품 상태를 바탕으로 안내합니다.</p>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-mark">Q</span><span>상품 검수는 어떤 순서로 진행되나요?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
-            <p>사진과 상품 정보를 먼저 확인하고, 입고된 상품의 상태를 직접 살펴 검수 결과와 특징을 정리해 등록합니다.</p>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-mark">Q</span><span>원하는 상품을 어떻게 찾을 수 있나요?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
-            <p>홈페이지 상단의 카테고리를 선택하거나 검색창에 상품명을 입력해 찾아보실 수 있습니다.</p>
-          </details>
-        </div>
-      </section>
+  <main class="support-main">
+    <div class="support-intro">
+      <p class="eyebrow">WELLHOUSE GUIDE</p>
+      <h1>공지사항 및 Q&amp;A</h1>
+      <p>공지사항과 자주 묻는 질문을 확인하고, 상품에 대해 문의해 주세요.</p>
     </div>
+
+    <div class="support-tabs" role="tablist" aria-label="고객 안내 선택">
+      <button class="support-tab is-active" id="notice-tab" type="button" role="tab" aria-selected="true" aria-controls="support-notice" tabindex="0">공지사항</button>
+      <button class="support-tab" id="qna-tab" type="button" role="tab" aria-selected="false" aria-controls="support-qna" tabindex="-1">Q&amp;A</button>
+    </div>
+
+    <section class="support-panel" id="support-notice" role="tabpanel" aria-labelledby="notice-tab">
+      <ul class="notice-list">
+        <li>
+          <details class="notice-item">
+            <summary><span class="notice-tag is-important">검수 안내</span><span class="notice-title">상품 상태와 등급을 꼼꼼히 확인합니다</span><time datetime="2026-11-05">2026.11.05</time></summary>
+            <div class="notice-body"><p>등록된 사진과 상품 정보를 먼저 살펴본 뒤 실물의 사용감, 오염, 흠집과 작동 상태를 확인합니다.</p><p>검수 결과와 상품별 특징은 각 상품 상세 페이지의 검수 리포트에서 확인하실 수 있습니다.</p></div>
+          </details>
+        </li>
+        <li>
+          <details class="notice-item">
+            <summary><span class="notice-tag">상품 안내</span><span class="notice-title">빈티지 상품은 하나씩 상태가 다릅니다</span><time datetime="2026-11-05">2026.11.05</time></summary>
+            <div class="notice-body"><p>오래 사용된 상품은 같은 종류라도 색감이나 사용 흔적이 서로 다를 수 있습니다. 구매 전 상품 사진과 설명, 검수 리포트를 함께 확인해 주세요.</p></div>
+          </details>
+        </li>
+        <li>
+          <details class="notice-item">
+            <summary><span class="notice-tag">새 상품</span><span class="notice-title">새로운 빈티지 상품이 꾸준히 등록됩니다</span><time datetime="2026-11-05">2026.11.05</time></summary>
+            <div class="notice-body"><p>상품 목록은 새롭게 발견한 아이템에 따라 업데이트됩니다. 카테고리와 검색을 이용해 관심 있는 상품을 살펴보세요.</p></div>
+          </details>
+        </li>
+        <li>
+          <details class="notice-item">
+            <summary><span class="notice-tag">배송 안내</span><span class="notice-title">배송 및 매장 픽업 안내</span><time datetime="2026-11-05">2026.11.05</time></summary>
+            <div class="notice-body"><p>상품 상세 페이지에서 택배 또는 매장 픽업을 선택할 수 있습니다. 상품별 배송 조건은 구매 전에 확인해 주세요.</p></div>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <section class="support-panel" id="support-qna" role="tabpanel" aria-labelledby="qna-tab" hidden>
+      <div class="qna-filter" role="group" aria-label="질문 분류">
+        <button class="qna-chip is-active" type="button" data-topic="all" aria-pressed="true">전체</button>
+        <button class="qna-chip" type="button" data-topic="product" aria-pressed="false">상품 문의</button>
+        <button class="qna-chip" type="button" data-topic="inspection" aria-pressed="false">검수·등급</button>
+        <button class="qna-chip" type="button" data-topic="shipping" aria-pressed="false">주문·배송</button>
+      </div>
+      <ul class="qna-list">
+        <li data-topic="inspection">
+          <details class="qna-item">
+            <summary><span class="qna-mark">Q</span><span class="qna-question">상품 상태와 등급은 어디서 확인하나요?</span><span class="qna-topic">검수·등급</span></summary>
+            <div class="qna-answer"><span class="qna-mark">A</span><p>상품 상세 페이지의 검수 리포트에서 등급과 항목별 상태, 등급 판정 이유를 확인하실 수 있습니다.</p></div>
+          </details>
+        </li>
+        <li data-topic="inspection">
+          <details class="qna-item">
+            <summary><span class="qna-mark">Q</span><span class="qna-question">상품 검수는 어떤 순서로 진행되나요?</span><span class="qna-topic">검수·등급</span></summary>
+            <div class="qna-answer"><span class="qna-mark">A</span><p>사진과 상품 정보를 확인한 뒤 입고된 상품의 상태를 직접 살펴 검수 결과와 특징을 정리해 등록합니다.</p></div>
+          </details>
+        </li>
+        <li data-topic="product">
+          <details class="qna-item">
+            <summary><span class="qna-mark">Q</span><span class="qna-question">원하는 상품을 어떻게 찾을 수 있나요?</span><span class="qna-topic">상품 문의</span></summary>
+            <div class="qna-answer"><span class="qna-mark">A</span><p>카테고리 또는 검색으로 상품을 찾을 수 있습니다. 특정 상품의 추가 정보가 필요하면 아래 상품 문의하기를 이용해 주세요.</p></div>
+          </details>
+        </li>
+        <li data-topic="shipping">
+          <details class="qna-item">
+            <summary><span class="qna-mark">Q</span><span class="qna-question">배송 방법은 어디서 확인하나요?</span><span class="qna-topic">주문·배송</span></summary>
+            <div class="qna-answer"><span class="qna-mark">A</span><p>상품 상세 페이지에서 택배 또는 매장 픽업을 선택할 수 있으며, 해당 상품의 배송비와 조건도 함께 확인할 수 있습니다.</p></div>
+          </details>
+        </li>
+      </ul>
+
+      <section class="ask-box" aria-labelledby="ask-title">
+        <div>
+          <p class="eyebrow">PRODUCT INQUIRY</p>
+          <h2 id="ask-title">상품 문의하기</h2>
+          <p>상품명과 궁금한 내용을 적어 주세요. 현재 문의 전송 기능은 준비 중이며, 이 양식은 입력 화면 미리보기입니다.</p>
+        </div>
+        <form id="ask-form">
+          <label class="ask-label" for="ask-product">상품명</label>
+          <input class="ask-input" id="ask-product" name="product" type="text" maxlength="100" placeholder="문의할 상품명을 입력해 주세요" required>
+          <label class="ask-label" for="ask-email">답변 받을 이메일</label>
+          <input class="ask-input" id="ask-email" name="email" type="email" maxlength="254" placeholder="name@example.com" autocomplete="email" required>
+          <label class="ask-label" for="ask-message-input">문의 내용</label>
+          <textarea class="ask-input ask-textarea" id="ask-message-input" name="message" maxlength="1000" placeholder="상품에 대해 궁금한 내용을 입력해 주세요" required></textarea>
+          <p class="ask-message" id="ask-status" role="status" aria-live="polite"></p>
+          <button class="ask-submit" type="submit">문의 내용 확인 <span aria-hidden="true">→</span></button>
+        </form>
+      </section>
+    </section>
   </main>
 </body>
 </html>

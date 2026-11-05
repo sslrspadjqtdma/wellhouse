@@ -19,7 +19,9 @@ supportTabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectTab(tab));
   tab.addEventListener('keydown', (event) => {
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-    const nextTab = supportTabs[(index + 1) % supportTabs.length];
+    event.preventDefault();
+    const direction = event.key === 'ArrowRight' ? 1 : -1;
+    const nextTab = supportTabs[(index + direction + supportTabs.length) % supportTabs.length];
     selectTab(nextTab);
     nextTab.focus();
   });
@@ -28,18 +30,20 @@ supportTabs.forEach((tab, index) => {
 qnaChips.forEach((chip) => {
   chip.addEventListener('click', () => {
     const topic = chip.dataset.topic;
-    qnaChips.forEach((item) => item.classList.toggle('is-active', item === chip));
+    qnaChips.forEach((item) => {
+      const isSelected = item === chip;
+      item.classList.toggle('is-active', isSelected);
+      item.setAttribute('aria-pressed', String(isSelected));
+    });
     qnaItems.forEach((item) => { item.hidden = topic !== 'all' && item.dataset.topic !== topic; });
   });
 });
 
 askForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  askStatus.classList.remove('is-success');
   if (!askForm.reportValidity()) return;
-  askStatus.textContent = '문의가 접수됐어요. 실제 답변 발송은 고객센터 서버 연결 후 이용할 수 있어요.';
-  askStatus.classList.add('is-success');
-  askForm.reset();
+  askStatus.textContent = '문의 전송 기능이 아직 연결되지 않아 접수되지 않았어요. 고객센터 연결 후 다시 이용해 주세요.';
+  askStatus.classList.remove('is-success');
 });
 
 const initialTab = document.querySelector(`.support-tab[aria-controls="${window.location.hash.slice(1)}"]`);
