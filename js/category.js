@@ -67,7 +67,9 @@ function cardTemplate(product) {
 function render() {
   const query = searchInput.value.trim().toLocaleLowerCase('ko');
   const visible = products
-    .filter((product) => Object.entries(activeFilters).every(([key, value]) => value === 'all' || product[key] === value))
+    .filter((product) => Object.entries(activeFilters).every(([key, value]) => (
+      Array.isArray(value) ? value.length === 0 || value.includes(product[key]) : value === 'all' || product[key] === value
+    )))
     .filter((product) => [product.name, product.shop, product.artist, product.sub, product.genre, product.categoryName].join(' ').toLocaleLowerCase('ko').includes(query))
     .sort(SORTERS[sortSelect.value]); // 정렬 기준이 같으면 목록 순서(추천·인기 순)를 그대로 유지한다
 
@@ -80,8 +82,7 @@ function visibleCategoryFilters() {
   if (categoryKey !== 'cd') return category.filters;
 
   const filters = Object.fromEntries(category.filters.map((filter) => [filter.key, filter]));
-  const genreFilter = activeFilters.format === 'LP' ? filters.lpGenre : filters.genre;
-  return [filters.format, genreFilter, filters.era];
+  return [filters.format, filters.genre, filters.era];
 }
 
 function renderFilterGroups() {
@@ -100,7 +101,18 @@ function showCategory(key, preset = {}) {
   categoryKey = isOverview(key) || CATEGORY_DATA[key] ? key : 'all';
   category = OVERVIEWS[categoryKey] || CATEGORY_DATA[categoryKey];
   products = productsByCategory[categoryKey];
-  activeFilters = Object.fromEntries(category.filters.map((filter) => [filter.key, filter.options.includes(preset[filter.key]) ? preset[filter.key] : 'all']));
+  activeFilters = Object.fromEntries(category.filters.map((filter) => {
+    if (filter.key === 'genre' || filter.key === 'era') {
+      const selected = Array.isArray(preset[filter.key]) ? preset[filter.key] : [preset[filter.key]];
+      return [filter.key, selected.filter((value) => filter.options.includes(value))];
+    }
+
+    return [filter.key, filter.options.includes(preset[filter.key]) ? preset[filter.key] : 'all'];
+  }));
+  if (categoryKey === 'cd' && activeFilters.genre.length === 0 && preset.lpGenre) {
+    const legacyGenreMap = { 팝송: ['팝'], 가요: ['발라드', 'K팝'], 클래식: ['클래식'] };
+    activeFilters.genre = legacyGenreMap[preset.lpGenre] || [];
+  }
 
   document.title = `${category.title} — wellhouse`;
   document.querySelector('#category-eyebrow').textContent = category.eyebrow;
@@ -140,7 +152,10 @@ function dropdownTemplate(title) {
 
 function updateFilterUI() {
   filterGroups.querySelectorAll('.filter-chip').forEach((chip) => {
-    const isActive = activeFilters[chip.dataset.filter] === chip.dataset.value;
+    const value = activeFilters[chip.dataset.filter];
+    const isActive = Array.isArray(value)
+      ? chip.dataset.value === 'all' ? value.length === 0 : value.includes(chip.dataset.value)
+      : value === chip.dataset.value;
     chip.classList.toggle('is-active', isActive);
     chip.setAttribute('aria-pressed', String(isActive));
 
@@ -172,12 +187,20 @@ filterGroups.addEventListener('click', (event) => {
     menuItem.blur();
   } else if (chip) {
     if (chip.dataset.filter === 'categoryName') resetSubFilters();
-    if (chip.dataset.filter === 'format') {
-      activeFilters.genre = 'all';
-      activeFilters.lpGenre = 'all';
+    const filter = chip.dataset.filter;
+    if (filter === 'genre' || filter === 'era') {
+      if (chip.dataset.value === 'all') {
+        activeFilters[filter] = [];
+      } else {
+        const selected = activeFilters[filter];
+        const index = selected.indexOf(chip.dataset.value);
+        if (index >= 0) selected.splice(index, 1);
+        else selected.push(chip.dataset.value);
+      }
+    } else {
+      activeFilters[filter] = chip.dataset.value;
     }
-    activeFilters[chip.dataset.filter] = chip.dataset.value;
-    if (chip.dataset.filter === 'format') renderFilterGroups();
+    if (filter === 'format') renderFilterGroups();
   } else {
     return;
   }
@@ -202,7 +225,10 @@ searchInput.addEventListener('input', render);
 
 // 카테고리 버튼은 페이지를 새로 열지 않고 같은 화면에서 상품 목록만 바꾼다.
 function showFromUrl() {
-  const params = Object.fromEntries(new URLSearchParams(window.location.search));
+  const searchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(searchParams);
+  params.genre = searchParams.getAll('genre');
+  params.era = searchParams.getAll('era');
   if (params.q !== undefined) searchInput.value = params.q;
   showCategory(params.category, params);
 }
