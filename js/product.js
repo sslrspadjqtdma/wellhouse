@@ -41,7 +41,8 @@ function infoTemplate(inspection, stock) {
         <strong>${won(product.salePrice)}</strong>
         ${product.discount ? `<del>${won(product.price)}</del>` : ''}
       </div>
-      <p class="pd-lead">${escapeHtml(SUB_COPY[product.sub || product.genre].story)}</p>
+      <p class="pd-lead">${escapeHtml(product.story || SUB_COPY[product.sub || product.genre].story)}</p>
+      ${product.consumptionWarning ? `<p class="pd-safety-notice" role="note"><strong>섭취 비권장 안내</strong><span>${escapeHtml(product.consumptionWarning)}</span></p>` : ''}
 
       <dl class="pd-rows">
         <div><dt>${product.album ? '아티스트' : '판매처'}</dt><dd>${escapeHtml(product.album ? product.artist : product.shop)}</dd></div>
@@ -126,6 +127,7 @@ function detailTemplate(detail) {
 function inspectionTemplate(inspection) {
   const grade = GRADES[inspection.grade];
   const steps = ['사진 검수', '실물 입고', '실물 검수 · 등급', '판매 등록'];
+  const photoOrigins = ['35% 40%', '65% 70%', '50% 50%'];
   return `
     <section class="pd-section pd-report" id="inspection-report" aria-labelledby="report-title">
       <h2 class="pd-section-title" id="report-title">검수 리포트</h2>
@@ -148,13 +150,37 @@ function inspectionTemplate(inspection) {
           <p class="pd-report-reason">${escapeHtml(inspection.reason)}</p>
           <table class="pd-checklist">
             <caption>검수 항목별 결과</caption>
-            <thead><tr><th scope="col">검수 항목</th><th scope="col">결과</th><th scope="col">내용</th></tr></thead>
+            <thead><tr><th scope="col">검수 항목</th><th scope="col">결과</th><th scope="col">내용</th><th scope="col">상세 사진</th></tr></thead>
             <tbody>
-              ${inspection.items.map((item) => `<tr><th scope="row">${item.label}</th><td><span class="pd-status is-${item.status}">${STATUS_LABEL[item.status]}</span></td><td>${escapeHtml(item.text)}</td></tr>`).join('')}
+              ${inspection.items.map((item, index) => {
+                const hasFinding = item.status !== 'ok';
+                const origin = photoOrigins[index % photoOrigins.length];
+                return `<tr>
+                  <th scope="row">${escapeHtml(item.label)}</th>
+                  <td><span class="pd-status is-${item.status}">${STATUS_LABEL[item.status]}</span></td>
+                  <td>${escapeHtml(item.text)}</td>
+                  <td>${hasFinding
+                    ? `<button class="pd-finding-photo" type="button" data-inspection-photo data-origin="${origin}" data-zoom="2.2" data-label="${escapeHtml(item.label)}" data-description="${escapeHtml(item.text)}" aria-haspopup="dialog" aria-label="${escapeHtml(item.label)} 상품 사진 확대 보기">
+                        <span class="pd-finding-photo-preview"><img src="${escapeHtml(product.img)}" alt="" style="transform-origin:${origin};transform:scale(2.2)"></span>
+                        <span>사진 확대</span>
+                      </button>`
+                    : '<span class="pd-no-finding-photo" aria-label="확대 사진 없음">—</span>'}</td>
+                </tr>`;
+              }).join('')}
             </tbody>
           </table>
         </div>
       </div>
+      <dialog class="pd-inspection-dialog" id="pd-inspection-dialog" aria-labelledby="pd-inspection-dialog-title">
+        <div class="pd-inspection-dialog-content">
+          <button class="pd-inspection-dialog-close" type="button" aria-label="사진 확대 닫기">×</button>
+          <p class="pd-inspection-dialog-eyebrow">INSPECTION DETAIL</p>
+          <h3 id="pd-inspection-dialog-title"></h3>
+          <div class="pd-inspection-dialog-image"><img id="pd-inspection-dialog-image" src="${escapeHtml(product.img)}" alt=""></div>
+          <p class="pd-inspection-dialog-description"></p>
+          <p class="pd-inspection-dialog-note">상품 대표 사진을 확대해 보여드려요.</p>
+        </div>
+      </dialog>
     </section>`;
 }
 
@@ -299,6 +325,23 @@ function bindInteractions(stock) {
       mainImage.style.transformOrigin = thumb.dataset.origin;
       mainImage.style.transform = `scale(${thumb.dataset.zoom})`;
     });
+  });
+
+  const inspectionDialog = document.querySelector('#pd-inspection-dialog');
+  const inspectionDialogImage = document.querySelector('#pd-inspection-dialog-image');
+  document.querySelectorAll('[data-inspection-photo]').forEach((button) => {
+    button.addEventListener('click', () => {
+      inspectionDialog.querySelector('#pd-inspection-dialog-title').textContent = button.dataset.label;
+      inspectionDialog.querySelector('.pd-inspection-dialog-description').textContent = button.dataset.description;
+      inspectionDialogImage.alt = `${product.name} ${button.dataset.label} 확대 사진`;
+      inspectionDialogImage.style.transformOrigin = button.dataset.origin;
+      inspectionDialogImage.style.transform = `scale(${button.dataset.zoom})`;
+      inspectionDialog.showModal();
+    });
+  });
+  inspectionDialog.querySelector('.pd-inspection-dialog-close').addEventListener('click', () => inspectionDialog.close());
+  inspectionDialog.addEventListener('click', (event) => {
+    if (event.target === inspectionDialog) inspectionDialog.close();
   });
 
   document.querySelector('#pd-buy').addEventListener('click', () => {

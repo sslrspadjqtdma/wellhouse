@@ -8,7 +8,7 @@ const photoUrl = (id, width = 700) => `https://images.unsplash.com/photo-${id}?a
 let nextId = 0;
 const productsByCategory = Object.fromEntries(Object.entries(CATEGORY_DATA).map(([key, data]) => [key, data.products.map((product, index) => {
   const bg = BACKGROUNDS[index % BACKGROUNDS.length];
-  let img = photoUrl(product.photo);
+  let img = product.image || photoUrl(product.photo);
   if (product.art) img = productArt({ bg, ...product.art });
   if (product.album) img = albumArt({ bg, title: product.name, artist: product.artist, year: product.year, ...product.album });
 

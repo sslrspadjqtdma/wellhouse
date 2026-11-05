@@ -153,7 +153,13 @@ function withEyo(word) {
 
 function buildDetail(product) {
   const seed = seedOf(product.slug);
-  const copy = SUB_COPY[product.sub || product.genre];
+  const defaultCopy = SUB_COPY[product.sub || product.genre];
+  const copy = {
+    ...defaultCopy,
+    material: product.material || defaultCopy.material,
+    origin: product.origin || defaultCopy.origin,
+    story: product.story || defaultCopy.story,
+  };
   const era = product.year ? `${product.year}년` : (/90s/.test(product.name) ? '1990년대' : ['1980년대', '1990년대', '2000년대'][seed % 3]);
   const intro = product.album
     ? `${product.year}년에 발매된 ${product.artist}의 앨범, 「${product.name}」.`

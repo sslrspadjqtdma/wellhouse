@@ -226,6 +226,13 @@ const drawings = {
     <path d="M118 226 L262 226 L252 362 Q250 376 236 376 L144 376 Q130 376 128 362 Z" fill="${c}" ${outline(d)}/>
     <ellipse cx="190" cy="226" rx="72" ry="12" fill="${shade(c, -0.25)}" ${outline(d)}/>
     <path d="M132 280 L252 280" stroke="${l}" stroke-width="8"/>`,
+  colaBottle: (c, d, l) => `
+    <path d="M155 370 L163 267 Q166 248 179 231 Q190 216 185 190 L181 166 Q178 148 187 137 L190 111 L210 111 L213 137 Q222 148 219 166 L215 190 Q210 216 221 231 Q234 248 237 267 L245 370 Q246 383 233 386 L167 386 Q154 383 155 370 Z" fill="${c}" fill-opacity=".92" ${outline(d)}/>
+    <path d="M185 139 L215 139 L218 158 L182 158 Z" fill="${l}" ${outline(d)}/>
+    <rect x="163" y="270" width="74" height="66" rx="4" fill="${l}" ${outline(d)}/>
+    <path d="M172 285 Q200 274 228 285 L228 322 Q200 333 172 322 Z" fill="${l}"/>
+    <text x="200" y="306" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-style="italic" font-weight="700" fill="#fffaf2">Coca-Cola</text>
+    <path d="M163 357 L237 357" stroke="${d}" stroke-width="3" opacity=".5"/>`,
 };
 
 function productArt({ shape, color, bg = '#eee6da', accent }) {
